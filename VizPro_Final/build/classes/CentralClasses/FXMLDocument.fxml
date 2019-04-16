@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vizpro_final.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CentralClasses.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+      <BorderPane prefHeight="278.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label alignment="CENTER" prefHeight="100.0" text="(Tähän mahdollisesti logo)" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <padding>
+                  <Insets top="50.0" />
+               </padding>
+            </Label>
+         </top>
+         <bottom>
+            <HBox fx:id="LogosHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" >
+               <children>
+                  <Label prefHeight="40.0" prefWidth="60.0" text="Logo">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="40.0" prefWidth="130.0" text="Toinen logo">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox fx:id="ButtonVbox" alignment="CENTER" prefHeight="300.0" prefWidth="200.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXButton fx:id="CreateGrade" onAction="#CreateGradeAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#a81d1d" text="Luo uusi gradu">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="VisualizeGrades" onAction="#VisualizeGradesAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#ba1e1e" text="Visualisoi graduja">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="50.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
     </children>
 </AnchorPane>

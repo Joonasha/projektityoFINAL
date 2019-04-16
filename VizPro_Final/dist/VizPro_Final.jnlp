@@ -8,7 +8,15 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="VizPro_Final.jar" size="2652" download="eager" />
+    <jar href="VizPro_Final.jar" size="5445" download="eager" />
+    <jar href="lib\commons-codec-1.11.jar" size="335042" download="eager" />
+    <jar href="lib\commons-collections4-4.2.jar" size="752798" download="eager" />
+    <jar href="lib\commons-compress-1.18.jar" size="591748" download="eager" />
+    <jar href="lib\jfoenix-8.0.4.jar" size="2487326" download="eager" />
+    <jar href="lib\poi-4.0.1.jar" size="2718209" download="eager" />
+    <jar href="lib\poi-ooxml-4.0.1.jar" size="1766188" download="eager" />
+    <jar href="lib\poi-ooxml-schemas-4.0.1.jar" size="7771088" download="eager" />
+    <jar href="lib\xmlbeans-3.0.2.jar" size="2572733" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="VizPro_Final" >
     <param name="requiredFXVersion" value="8.0+"/>
