@@ -5,6 +5,7 @@
  */
 package CentralClasses;
 
+import CentralClasses.MainWindow;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,13 +50,20 @@ public class FXMLDocumentController implements Initializable {
     CreateGrade.setStyle("-fx-font-size: "+ fontSize.asString() + "px;");
     //CreateGrade.setStyle(String.format("-fx-font-size: %dpx;", (int)(0.45 * CreateGrade.)));
     }    
-
+/*
     @FXML
     private void CreateGradeAction(ActionEvent event) {
+        MainWindow.newThesis();
     }
 
     @FXML
     private void VisualizeGradesAction(ActionEvent event) {
+        MainWindow.visualizationPage();
     }
-    
+   
+    @FXML
+    private void SearchGradesAction(ActionEvent event) {
+        SearchGrades.visualizationPage();
+    }     
+*/ 
 }

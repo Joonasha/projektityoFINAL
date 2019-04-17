@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  *
  * @author Joonas
  */
-public class VizPro_Final extends Application {
+public class MainWindow extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
