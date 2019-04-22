@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AddNewThesis;
+package AddGradeClasses;
 
+import com.jfoenix.controls.JFXScrollPane;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -14,8 +16,9 @@ import javafx.fxml.Initializable;
  *
  * @author Joonas
  */
-public class AddStudiesController implements Initializable {
+public class AddGradesController implements Initializable {
 
+    
     /**
      * Initializes the controller class.
      */

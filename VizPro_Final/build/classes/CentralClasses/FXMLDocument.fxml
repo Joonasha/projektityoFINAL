@@ -23,7 +23,7 @@
             </Label>
          </top>
          <bottom>
-            <HBox fx:id="LogosHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" >
+            <HBox fx:id="LogosHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Label prefHeight="40.0" prefWidth="60.0" text="Logo">
                      <font>
@@ -45,9 +45,9 @@
             </HBox>
          </bottom>
          <center>
-            <VBox fx:id="ButtonVbox" alignment="CENTER" prefHeight="300.0" prefWidth="200.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+            <VBox fx:id="ButtonVbox" alignment="CENTER" prefHeight="300.0" prefWidth="200.0" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXButton fx:id="CreateGrade" onAction="#CreateGradeAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#a81d1d" text="Luo uusi gradu">
+                  <JFXButton fx:id="CreateGrade" buttonType="RAISED" onAction="#CreateGradeAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#9a1919" text="Luo uusi gradu" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -55,7 +55,15 @@
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="VisualizeGrades" onAction="#VisualizeGradesAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#ba1e1e" text="Visualisoi graduja">
+                  <JFXButton fx:id="SearchGrades" buttonType="RAISED" onAction="#SearchGradesAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#ba1e1e" text="Hae Graduja" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="VisualizeGrades" buttonType="RAISED" onAction="#VisualizeGradesAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#ba1e1e" text="Visualisoi graduja" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>

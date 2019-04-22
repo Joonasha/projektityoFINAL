@@ -7,6 +7,7 @@ package CentralClasses;
 
 import CentralClasses.MainWindow;
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.DoubleProperty;
@@ -39,9 +40,11 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton VisualizeGrades;
     
     private DoubleProperty fontSize = new SimpleDoubleProperty(10);
+    @FXML
+    private JFXButton SearchGrades;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        //hoida skaalaus täällä
     CreateGrade.prefWidthProperty().bind(AnchorPane.widthProperty().subtract(250));
     CreateGrade.prefHeightProperty().bind(AnchorPane.heightProperty().subtract(100));
     Text text = new Text(CreateGrade.getText());
@@ -50,20 +53,19 @@ public class FXMLDocumentController implements Initializable {
     CreateGrade.setStyle("-fx-font-size: "+ fontSize.asString() + "px;");
     //CreateGrade.setStyle(String.format("-fx-font-size: %dpx;", (int)(0.45 * CreateGrade.)));
     }    
-/*
+
     @FXML
-    private void CreateGradeAction(ActionEvent event) {
-        MainWindow.newThesis();
+    private void CreateGradeAction(ActionEvent event) throws IOException {
+        MainWindow.AddGradesScene();
     }
 
     @FXML
     private void VisualizeGradesAction(ActionEvent event) {
-        MainWindow.visualizationPage();
+        //MainWindow.visualizationPage();
     }
    
     @FXML
-    private void SearchGradesAction(ActionEvent event) {
-        SearchGrades.visualizationPage();
+    private void SearchGradesAction(ActionEvent event) throws IOException {
+        MainWindow.SearchGradesScene();
     }     
-*/ 
 }

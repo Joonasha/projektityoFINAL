@@ -5,14 +5,19 @@
  */
 package CentralClasses;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import AddGradeClasses.AddGradesController;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
+import javafx.scene.*;
+import javafx.scene.layout.VBox;
+import SearchClasses.*;
+import java.io.IOException;
+//import HelperClasses.Excel;
+import java.util.ArrayList;
+import javafx.scene.chart.Chart;
+import javafx.scene.control.ScrollPane;
 
 /**
  *
@@ -20,20 +25,23 @@ import javafx.stage.Stage;
  */
 public class MainWindow extends Application {
     
+    public static Stage mainStage;
+    public static Scene newScene;
+    public static Parent root;
+    
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+    public void start(Stage primaryStage) throws Exception {
+        root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
-Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
-double width = resolution.getWidth();
-double height = resolution.getHeight(); 
-double w = width/1280;  //your window width
-double h = height/720;  //your window hight
-Scale scale = new Scale(w, h, 0, 0);
-root.getTransforms().add(scale);        
-        stage.setScene(scene);
-        stage.show();
+        mainStage = primaryStage;
+
+        //VBox base0 = (VBox) FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        //frontpage = new Scene(base0, 640, 400);
+        
+        primaryStage.setTitle("Uuden gradun lisäys");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     /**
@@ -43,4 +51,17 @@ root.getTransforms().add(scale);
         launch(args);
     }
     
+    public static void AddGradesScene() throws IOException {
+        root = FXMLLoader.load(AddGradesController.class.getResource("AddGrades.fxml"));
+        newScene = new Scene(root, 1200, 950);
+        mainStage.setScene(newScene);
+    }    
+    public static void VisualizeGradesScene() {
+    	mainStage.setScene(newScene);
+    }
+    public static void SearchGradesScene() throws IOException{
+        Parent root = FXMLLoader.load(SeachGradesController.class.getResource("SeachGrades.fxml"));
+        newScene = new Scene(root, 1200, 950);  
+        mainStage.setScene(newScene);
+    }    
 }
