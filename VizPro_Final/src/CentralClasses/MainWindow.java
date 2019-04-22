@@ -31,7 +31,7 @@ public class MainWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
         
         Scene scene = new Scene(root);
         mainStage = primaryStage;
@@ -39,7 +39,7 @@ public class MainWindow extends Application {
         //VBox base0 = (VBox) FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         //frontpage = new Scene(base0, 640, 400);
         
-        primaryStage.setTitle("Uuden gradun lisäys");
+        primaryStage.setTitle("(Ohjelman kok nimi tähän)");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

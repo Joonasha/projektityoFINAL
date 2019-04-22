@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 22, 2019, 5:34:57 PM
+    Author     : joonasha
+*/
+
+.mainFxmlClass {
+    -fx-background: #FFFFFF;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+
+.jfx-button {
+    -fx-background-color: #00A8C1;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;    
+}
+.jfx-button:focused {
+    -fx-background-color: #1A84A0;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+.jfx-button:hover {
+    -fx-background-color: #1A84A0;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+.jfx-button2 {
+    -fx-background-color: #00A8C1;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;    
+}
+.jfx-button2:focused {
+    -fx-background-color: #1A84A0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+.jfx-button2:hover {
+    -fx-background-color: #1A84A0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}

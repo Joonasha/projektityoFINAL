@@ -25,7 +25,7 @@ import javafx.scene.text.Text;
  *
  * @author Joonas
  */
-public class FXMLDocumentController implements Initializable {
+public class MainWindowController implements Initializable {
     
     private Label label;
     @FXML
@@ -42,15 +42,22 @@ public class FXMLDocumentController implements Initializable {
     private DoubleProperty fontSize = new SimpleDoubleProperty(10);
     @FXML
     private JFXButton SearchGrades;
+    @FXML
+    private JFXButton Login;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        CreateGrade.setFocusTraversable(false);
+        VisualizeGrades.setFocusTraversable(false);
+        SearchGrades.setFocusTraversable(false);
+        Login.setFocusTraversable(false);
+        
         //hoida skaalaus täällä
-    CreateGrade.prefWidthProperty().bind(AnchorPane.widthProperty().subtract(250));
-    CreateGrade.prefHeightProperty().bind(AnchorPane.heightProperty().subtract(100));
-    Text text = new Text(CreateGrade.getText());
-    fontSize.bind(AnchorPane.widthProperty().add(AnchorPane.heightProperty()).divide(50));  
+    //CreateGrade.prefWidthProperty().bind(AnchorPane.widthProperty().subtract(250));
+    //CreateGrade.prefHeightProperty().bind(AnchorPane.heightProperty().subtract(100));
+    //Text text = new Text(CreateGrade.getText());
+    //fontSize.bind(AnchorPane.widthProperty().add(AnchorPane.heightProperty()).divide(50));  
     //text.setStyle("-fx-font: 40 Arial;");
-    CreateGrade.setStyle("-fx-font-size: "+ fontSize.asString() + "px;");
+    //CreateGrade.setStyle("-fx-font-size: "+ fontSize.asString() + "px;");
     //CreateGrade.setStyle(String.format("-fx-font-size: %dpx;", (int)(0.45 * CreateGrade.)));
     }    
 
@@ -68,4 +75,8 @@ public class FXMLDocumentController implements Initializable {
     private void SearchGradesAction(ActionEvent event) throws IOException {
         MainWindow.SearchGradesScene();
     }     
+
+    @FXML
+    private void LoginAction(ActionEvent event) {
+    }
 }
