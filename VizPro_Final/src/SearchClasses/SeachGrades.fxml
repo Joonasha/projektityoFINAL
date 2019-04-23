@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SeachGradesController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SeachGradesController">
     <stylesheets>
-        <URL value="@seachgrades.css"/>
+        <URL value="@seachgrades.css" />
     </stylesheets>
+   <children>
+      <BorderPane prefHeight="278.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="250.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXScrollPane prefHeight="100.0">
+                     <children>
+                        <JFXListView prefHeight="112.0" prefWidth="805.0" />
+                     </children>
+                  </JFXScrollPane>
+                  <JFXButton alignment="CENTER" prefHeight="100.0" prefWidth="96.0" />
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <VBox alignment="CENTER" prefHeight="126.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="150.0" text="Otsikko">
+                     <font>
+                        <Font size="30.0" />
+                     </font></Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton prefHeight="50.0" prefWidth="100.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></JFXButton>
+                        <JFXButton prefHeight="50.0" prefWidth="100.0">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin></JFXButton>
+                        <JFXButton prefHeight="50.0" prefWidth="100.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <right>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane prefHeight="69.0" prefWidth="900.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </right>
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="324.0" prefWidth="390.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="51.0" text="Label" />
+                        <JFXTextField alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="338.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="324.0" prefWidth="721.0" />
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
