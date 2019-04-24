@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -8,8 +12,225 @@
 <?import java.net.URL?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<JFXScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddGradeClasses.AddGradesController">
+<JFXScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddGradeClasses.AddGradesController">
    <children>
-      <AnchorPane prefHeight="364.0" prefWidth="557.0" />
+      <AnchorPane prefHeight="364.0" prefWidth="557.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="Label">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="150.0" top="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <GridPane prefHeight="400.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vuosi">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="70.0" left="50.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkielman tekijän nimi">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" top="30.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkielman nimi">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" top="130.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tekijöiden määrä">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" top="230.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <JFXComboBox prefWidth="180.0">
+                           <GridPane.margin>
+                              <Insets bottom="70.0" left="285.0" />
+                           </GridPane.margin>
+                        </JFXComboBox>
+                        <JFXTextField maxWidth="180.0">
+                           <GridPane.margin>
+                              <Insets left="285.0" top="30.0" />
+                           </GridPane.margin>
+                        </JFXTextField>
+                        <JFXTextField maxWidth="180.0">
+                           <GridPane.margin>
+                              <Insets left="285.0" top="130.0" />
+                           </GridPane.margin>
+                        </JFXTextField>
+                        <JFXComboBox prefWidth="180.0">
+                           <GridPane.margin>
+                              <Insets left="285.0" top="230.0" />
+                           </GridPane.margin>
+                        </JFXComboBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Artikkeleiden määrä" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="70.0" left="50.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opinnäytteen taso" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" top="30.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opinnäytteen muoto" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" top="130.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opinnäytteen kieli" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" top="230.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <JFXComboBox prefWidth="180.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="70.0" left="285.0" />
+                           </GridPane.margin>
+                        </JFXComboBox>
+                        <JFXComboBox prefWidth="180.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="285.0" top="30.0" />
+                           </GridPane.margin>
+                        </JFXComboBox>
+                        <JFXComboBox prefWidth="180.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="285.0" top="130.0" />
+                           </GridPane.margin>
+                        </JFXComboBox>
+                        <JFXComboBox prefWidth="180.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="285.0" top="230.0" />
+                           </GridPane.margin>
+                        </JFXComboBox>
+                     </children>
+                  </GridPane>
+                  <VBox>
+                     <children>
+                        <Label text="Label">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="150.0" top="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <GridPane prefHeight="600.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkimusmenetelmät">
+                           <GridPane.margin>
+                              <Insets bottom="550.0" left="160.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tietolähteet">
+                           <GridPane.margin>
+                              <Insets bottom="50.0" left="197.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <JFXListView maxHeight="200.0" maxWidth="300.0">
+                           <GridPane.margin>
+                              <Insets bottom="300.0" left="100.0" />
+                           </GridPane.margin>
+                        </JFXListView>
+                        <JFXListView maxHeight="200.0" maxWidth="300.0">
+                           <GridPane.margin>
+                              <Insets left="100.0" top="200.0" />
+                           </GridPane.margin>
+                        </JFXListView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Käsitteet ja tehtävät" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="550.0" left="163.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tiedonkeruumenetelmät" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="50.0" left="145.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <JFXListView maxHeight="200.0" maxWidth="300.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="300.0" left="100.0" />
+                           </GridPane.margin>
+                        </JFXListView>
+                        <JFXListView maxHeight="200.0" maxWidth="300.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="100.0" top="200.0" />
+                           </GridPane.margin>
+                        </JFXListView>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children></AnchorPane>
    </children>
 </JFXScrollPane>
