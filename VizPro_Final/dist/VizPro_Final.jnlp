@@ -8,11 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< HEAD
-    <jar href="VizPro_Final.jar" size="9741" download="eager" />
-=======
-    <jar href="VizPro_Final.jar" size="7185" download="eager" />
->>>>>>> 2dea478622cbc08dc41ba02baad5192c966ce467
+    <jar href="VizPro_Final.jar" size="14401" download="eager" />
     <jar href="lib\commons-codec-1.11.jar" size="335042" download="eager" />
     <jar href="lib\commons-collections4-4.2.jar" size="752798" download="eager" />
     <jar href="lib\commons-compress-1.18.jar" size="591748" download="eager" />

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
@@ -15,20 +14,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SeachGradesController">
-=======
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SeachGradesController">
->>>>>>> 2dea478622cbc08dc41ba02baad5192c966ce467
     <stylesheets>
-        <URL value="@seachgrades.css"/>
+        <URL value="@seachgrades.css" />
     </stylesheets>
-<<<<<<< HEAD
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -63,7 +51,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <HBox prefHeight="341.0" prefWidth="628.0">
+                  <HBox fx:id="contentMain" prefHeight="341.0" prefWidth="628.0">
                      <children>
                         <VBox fx:id="content1" prefHeight="324.0" prefWidth="390.0">
                            <children>
@@ -122,6 +110,9 @@
                            </HBox.margin>
                         </VBox>
                      </children>
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="258.0" prefWidth="628.0" VBox.vgrow="ALWAYS">
                      <children>
@@ -170,6 +161,4 @@
          </padding>
       </HBox>
    </children>
-=======
->>>>>>> 2dea478622cbc08dc41ba02baad5192c966ce467
 </AnchorPane>

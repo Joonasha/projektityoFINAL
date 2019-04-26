@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/AddGradeClasses/addgrades.css</file>
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/CentralClasses/MainWindow.fxml</file>
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/SearchClasses/SeachGrades.fxml</file>
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/CentralClasses/MainWindowController.java</file>
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/SearchClasses/SeachGradesController.java</file>
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/SearchClasses/seachgrades.css</file>
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/CentralClasses/mainwindow.css</file>
-            <file>file:/C:/Users/joonasha/Documents/GitHub/projektityoFINAL/VizPro_Final/src/CentralClasses/MainWindow.java</file>
-=======
-            <file>file:/C:/Users/arttusu/Desktop/projektityoFINAL-arttu/projektityoFINAL-arttu/VizPro_Final/src/AddGradeClasses/AddGrades.fxml</file>
->>>>>>> 2dea478622cbc08dc41ba02baad5192c966ce467
+            <file>file:/C:/Users/joonasha/Documents/NetBeansProjects/VizPro_Final/src/CentralClasses/MainWindow.fxml</file>
+            <file>file:/C:/Users/joonasha/Documents/NetBeansProjects/VizPro_Final/src/SearchClasses/SeachGrades.fxml</file>
+            <file>file:/C:/Users/joonasha/Documents/NetBeansProjects/VizPro_Final/src/SearchClasses/SeachGradesController.java</file>
+            <file>file:/C:/Users/joonasha/Documents/NetBeansProjects/VizPro_Final/src/CentralClasses/MainWindow.java</file>
         </group>
     </open-files>
 </project-private>
