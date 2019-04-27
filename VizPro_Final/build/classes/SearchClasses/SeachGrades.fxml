@@ -7,13 +7,17 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SeachGradesController">
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="700.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SeachGradesController">
     <stylesheets>
         <URL value="@seachgrades.css" />
     </stylesheets>
@@ -25,14 +29,49 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="223.0" prefWidth="628.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="100.0" prefWidth="150.0" text="Otsikko">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXButton fx:id="BackToMain" ellipsisString="" onAction="#BackToMainAction" prefHeight="50.0" prefWidth="120.0" styleClass="jfx-button2" stylesheets="@../CentralClasses/mainwindow.css" text="Takaisin" GridPane.halignment="LEFT">
+                                 <GridPane.margin>
+                                    <Insets right="20.0" top="10.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <Label fx:id="title" alignment="CENTER" prefHeight="76.0" prefWidth="328.0" styleClass="title" stylesheets="@seachgrades.css" text="Gradujen haku" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="45.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </GridPane>
+                        <Label alignment="CENTER" prefHeight="19.0" prefWidth="265.0" text="Listassa on oletuksena kaikki gradut valittuina.">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <JFXButton prefHeight="50.0" prefWidth="200.0" styleClass="jfx-button" stylesheets="@seachgrades.css" text="Yleiset tiedot">
+                              <JFXButton fx:id="General" onAction="#GeneralAction" prefHeight="50.0" prefWidth="200.0" styleClass="jfx-button" stylesheets="@seachgrades.css" text="Yleiset tiedot">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
@@ -42,7 +81,7 @@
                                     <Insets left="20.0" right="20.0" />
                                  </HBox.margin>
                               </JFXButton>
-                              <JFXButton prefHeight="50.0" prefWidth="200.0" text="Muut">
+                              <JFXButton fx:id="Others" onAction="#OthersAction" prefHeight="50.0" prefWidth="200.0" text="Muut">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
@@ -53,52 +92,52 @@
                   </VBox>
                   <HBox fx:id="contentMain" prefHeight="341.0" prefWidth="628.0">
                      <children>
-                        <VBox fx:id="content1" prefHeight="324.0" prefWidth="390.0">
+                        <VBox fx:id="content1" maxWidth="310.0" prefHeight="324.0" prefWidth="310.0">
                            <children>
-                              <Label prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen nimi" />
+                              <Label fx:id="nameLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen nimi" />
                               <JFXTextField fx:id="nameTF" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="338.0">
                                  <VBox.margin>
-                                    <Insets right="130.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </JFXTextField>
-                              <Label prefHeight="26.0" prefWidth="118.0" text="Tekijät">
+                              <Label fx:id="creatorsLabel" prefHeight="26.0" prefWidth="118.0" text="Tekijät">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
                               <JFXTextField fx:id="authorsTF" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="221.0">
                                  <VBox.margin>
-                                    <Insets right="130.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </JFXTextField>
-                              <Label prefHeight="26.0" prefWidth="118.0" text="Vuosi">
+                              <Label fx:id="yearLabel" prefHeight="26.0" prefWidth="118.0" text="Vuosi">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <JFXComboBox fx:id="yearCB" prefHeight="25.0" prefWidth="255.0" />
-                              <Label prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen muoto">
+                              <JFXComboBox fx:id="yearCB" prefHeight="25.0" prefWidth="274.0" />
+                              <Label fx:id="shapeLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen muoto">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <JFXComboBox fx:id="typeCB" prefHeight="25.0" prefWidth="254.0" />
+                              <JFXComboBox fx:id="typeCB" prefHeight="25.0" prefWidth="274.0" />
                            </children>
                            <HBox.margin>
                               <Insets left="70.0" />
                            </HBox.margin>
                         </VBox>
-                        <VBox fx:id="content2" prefHeight="262.0" prefWidth="387.0">
+                        <VBox fx:id="content2" prefHeight="262.0" prefWidth="367.0">
                            <children>
-                              <Label prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen taso" />
+                              <Label fx:id="levelLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen taso" />
                               <JFXComboBox fx:id="levelCB" prefHeight="25.0" prefWidth="217.0" />
-                              <Label prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen kieli">
+                              <Label fx:id="lanquageLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen kieli">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
                               <JFXComboBox fx:id="languageCB" prefHeight="25.0" prefWidth="219.0" />
-                              <Label prefHeight="26.0" prefWidth="118.0" text="Tekijöiden lukumäärä">
+                              <Label fx:id="amountLabel" prefHeight="26.0" prefWidth="118.0" text="Tekijöiden lukumäärä">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
@@ -146,7 +185,7 @@
                         </VBox>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="4.0" left="3.0" />
+                        <Insets bottom="4.0" left="3.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
                </children>
@@ -157,7 +196,7 @@
             <VBox fx:id="vbox2" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@seachgrades.css" HBox.hgrow="ALWAYS" />
          </children>
          <padding>
-            <Insets bottom="5.0" top="5.0" />
+            <Insets bottom="4.0" top="2.0" />
          </padding>
       </HBox>
    </children>

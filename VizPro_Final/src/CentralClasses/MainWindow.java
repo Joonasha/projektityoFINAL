@@ -39,7 +39,7 @@ public class MainWindow extends Application {
         //VBox base0 = (VBox) FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         //frontpage = new Scene(base0, 640, 400);
         
-        primaryStage.setTitle("(Ohjelman kok nimi tähän)");
+        primaryStage.setTitle("Gradujen visualisointi työkalu");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -53,7 +53,7 @@ public class MainWindow extends Application {
     
     public static void AddGradesScene() throws IOException {
         root = FXMLLoader.load(AddGradesController.class.getResource("AddGrades.fxml"));
-        newScene = new Scene(root, 1200, 950);
+        newScene = new Scene(root, 1000, 700);
         mainStage.setScene(newScene);
     }    
     public static void VisualizeGradesScene() {
@@ -61,7 +61,7 @@ public class MainWindow extends Application {
     }
     public static void SearchGradesScene() throws IOException{
         Parent root = FXMLLoader.load(SeachGradesController.class.getResource("SeachGrades.fxml"));
-        newScene = new Scene(root, 1200, 950);  
+        newScene = new Scene(root, 1000, 700);  
         mainStage.setScene(newScene);
     }    
 }

@@ -14,6 +14,11 @@ and open the template in the editor.
     -fx-background-radius: 5, 4, 3;
 }
 
+.title{
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;  
+}
+
 .jfx-button {
     -fx-background-color: #00A8C1;
     -fx-text-fill: white;

@@ -36,20 +36,23 @@ public class MainWindowController implements Initializable {
     private AnchorPane AnchorPane;
     @FXML
     private VBox ButtonVbox;
-    @FXML
-    private JFXButton VisualizeGrades;
     
     private DoubleProperty fontSize = new SimpleDoubleProperty(10);
     @FXML
     private JFXButton SearchGrades;
     @FXML
     private JFXButton Login;
+    @FXML
+    private JFXButton Manual;
+    @FXML
+    private Label title;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         CreateGrade.setFocusTraversable(false);
-        VisualizeGrades.setFocusTraversable(false);
+        Manual.setFocusTraversable(false);
         SearchGrades.setFocusTraversable(false);
         Login.setFocusTraversable(false);
+        title.setText("Gradujen visualisointi\r\n   \t    työkalu");
         
         //hoida skaalaus täällä
     //CreateGrade.prefWidthProperty().bind(AnchorPane.widthProperty().subtract(250));
@@ -66,10 +69,6 @@ public class MainWindowController implements Initializable {
         MainWindow.AddGradesScene();
     }
 
-    @FXML
-    private void VisualizeGradesAction(ActionEvent event) {
-        //MainWindow.visualizationPage();
-    }
    
     @FXML
     private void SearchGradesAction(ActionEvent event) throws IOException {
@@ -78,5 +77,9 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void LoginAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void ManualAction(ActionEvent event) {
     }
 }

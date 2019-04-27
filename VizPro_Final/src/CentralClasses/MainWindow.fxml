@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="500.0" prefWidth="900.0" styleClass="mainFxmlClass" stylesheets="@mainwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CentralClasses.MainWindowController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" stylesheets="@mainwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CentralClasses.MainWindowController">
     <children>
       <BorderPane prefHeight="278.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
@@ -63,7 +63,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton fx:id="VisualizeGrades" buttonType="RAISED" onAction="#VisualizeGradesAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#ba1e1e" styleClass="jfx-button" stylesheets="@mainwindow.css" text="Visualisoi graduja" textAlignment="CENTER">
+                  <JFXButton fx:id="Manual" buttonType="RAISED" onAction="#ManualAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#ba1e1e" styleClass="jfx-button" stylesheets="@mainwindow.css" text="Ohjeet (tämä pois?)" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -76,12 +76,12 @@
                   </JFXButton>
                </children>
                <BorderPane.margin>
-                  <Insets top="30.0" />
+                  <Insets top="50.0" />
                </BorderPane.margin>
             </VBox>
          </center>
          <top>
-            <GridPane BorderPane.alignment="CENTER">
+            <GridPane prefWidth="900.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -89,9 +89,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" prefHeight="69.0" prefWidth="350.0" text="(Tähän ohjelman nimi)" GridPane.halignment="CENTER">
+                  <Label fx:id="title" alignment="CENTER" prefHeight="95.0" prefWidth="438.0" styleClass="title" stylesheets="@mainwindow.css" text="Gradujen visualisointi työkalu" GridPane.halignment="CENTER">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="30.0" />
                      </font>
                      <padding>
                         <Insets top="30.0" />
