@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,31 +17,63 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="1000.0" vbarPolicy="ALWAYS" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
-   <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="1000.0">
+<AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1000.0" styleClass="mainFxmlClass" stylesheets="@../../build/classes/AddGradeClasses/addgrades.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddGradeClasses.AddGradesController">
          <children>
-            <VBox prefHeight="1500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fx:id="scrollpane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="2000.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox fx:id="mainLayout">
                <children>
-                  <VBox>
+                  <VBox prefHeight="90.0" prefWidth="1000.0">
                      <children>
-                        <Label text="Label">
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXButton fx:id="BackToMain" ellipsisString="" onAction="#BackToMainAction" prefHeight="50.0" prefWidth="120.0" styleClass="jfx-button2" stylesheets="@../CentralClasses/mainwindow.css" text="Takaisin" GridPane.halignment="LEFT">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" right="20.0" top="10.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <Label fx:id="title" alignment="CENTER" prefHeight="76.0" prefWidth="328.0" styleClass="title" stylesheets="@../SearchClasses/seachgrades.css" text="Gradujen lisäys" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="45.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label prefHeight="47.0" prefWidth="203.0" text="Yleiset tiedot" underline="true">
                            <font>
                               <Font size="32.0" />
                            </font>
                            <VBox.margin>
-                              <Insets />
+                              <Insets bottom="-40.0" left="40.0" top="90.0" />
                            </VBox.margin>
                         </Label>
                      </children>
                      <padding>
-                        <Insets left="150.0" top="20.0" />
+                        <Insets top="20.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets bottom="50.0" />
+                        <Insets />
                      </VBox.margin>
                   </VBox>
-                  <GridPane prefHeight="400.0">
+                  <GridPane prefHeight="317.0" prefWidth="980.0" VBox.vgrow="NEVER">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -155,22 +188,25 @@
                         </JFXComboBox>
                      </children>
                   </GridPane>
-                  <VBox>
+                  <VBox prefHeight="70.0" prefWidth="1000.0" VBox.vgrow="NEVER">
                      <children>
-                        <Label text="Label">
+                        <Label text="Paradigman tutkimuskohteet" underline="true" VBox.vgrow="NEVER">
                            <font>
                               <Font size="32.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="30.0" left="30.0" top="70.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                      <padding>
-                        <Insets left="150.0" top="20.0" />
+                        <Insets bottom="30.0" top="40.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets bottom="50.0" />
+                        <Insets bottom="30.0" top="20.0" />
                      </VBox.margin>
                   </VBox>
-                  <GridPane prefHeight="600.0">
+                  <GridPane prefHeight="600.0" VBox.vgrow="NEVER">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -179,7 +215,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkimusmenetelmät">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkimusmenetelmät" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                            <GridPane.margin>
                               <Insets bottom="550.0" left="160.0" />
                            </GridPane.margin>
@@ -195,7 +231,7 @@
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <JFXListView maxHeight="200.0" maxWidth="300.0">
+                        <JFXListView maxHeight="200.0" maxWidth="300.0" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                            <GridPane.margin>
                               <Insets bottom="300.0" left="100.0" />
                            </GridPane.margin>
@@ -205,7 +241,7 @@
                               <Insets left="100.0" top="200.0" />
                            </GridPane.margin>
                         </JFXListView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Käsitteet ja tehtävät" GridPane.columnIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Käsitteet ja tehtävät" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -233,83 +269,90 @@
                         </JFXListView>
                      </children>
                   </GridPane>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="70.0" prefWidth="1000.0">
                      <children>
-                        <Label text="Label">
+                        <Label text="Muut" underline="true" VBox.vgrow="NEVER">
                            <font>
                               <Font size="32.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets left="30.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
-                     <padding>
-                        <Insets left="150.0" top="20.0" />
-                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="-70.0" />
+                     </VBox.margin>
                   </VBox>
-                  <GridPane prefHeight="400.0">
+                  <GridPane alignment="TOP_CENTER" prefHeight="400.0" prefWidth="980.0" VBox.vgrow="ALWAYS">
                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextArea maxHeight="130.0" maxWidth="189.0">
+                        <JFXTextArea maxHeight="38.0" maxWidth="189.0">
                            <GridPane.margin>
-                              <Insets left="100.0" />
+                              <Insets bottom="170.0" left="40.0" />
                            </GridPane.margin>
                         </JFXTextArea>
-                        <JFXListView maxHeight="38.0" maxWidth="189.0">
+                        <JFXListView maxHeight="200.0" maxWidth="189.0">
                            <GridPane.margin>
-                              <Insets bottom="170.0" left="100.0" />
+                              <Insets left="40.0" top="80.0" />
                            </GridPane.margin>
                         </JFXListView>
-                        <JFXTextArea maxHeight="130.0" maxWidth="189.0">
+                        <JFXTextArea maxHeight="38.0" maxWidth="189.0" GridPane.columnIndex="1">
                            <GridPane.margin>
-                              <Insets left="300.0" />
+                              <Insets bottom="170.0" left="40.0" />
                            </GridPane.margin>
                         </JFXTextArea>
-                        <JFXTextArea maxHeight="130.0" maxWidth="189.0">
+                        <JFXTextArea maxHeight="38.0" maxWidth="189.0" GridPane.columnIndex="3">
                            <GridPane.margin>
-                              <Insets left="700.0" />
+                              <Insets bottom="170.0" left="40.0" />
                            </GridPane.margin>
                         </JFXTextArea>
-                        <JFXTextArea maxHeight="130.0" maxWidth="189.0">
+                        <JFXTextArea maxHeight="38.0" maxWidth="189.0" GridPane.columnIndex="2">
                            <GridPane.margin>
-                              <Insets left="500.0" />
+                              <Insets bottom="170.0" left="40.0" />
                            </GridPane.margin>
                         </JFXTextArea>
-                        <JFXListView maxHeight="38.0" maxWidth="189.0">
+                        <JFXListView maxHeight="200.0" maxWidth="189.0" GridPane.columnIndex="2">
                            <GridPane.margin>
-                              <Insets bottom="170.0" left="500.0" />
+                              <Insets left="40.0" top="80.0" />
                            </GridPane.margin>
                         </JFXListView>
-                        <JFXListView maxHeight="38.0" maxWidth="189.0">
+                        <JFXListView maxHeight="200.0" maxWidth="189.0" GridPane.columnIndex="1">
                            <GridPane.margin>
-                              <Insets bottom="170.0" left="300.0" />
+                              <Insets left="40.0" top="80.0" />
                            </GridPane.margin>
                         </JFXListView>
-                        <JFXListView maxHeight="38.0" maxWidth="189.0">
+                        <JFXListView maxHeight="200.0" maxWidth="189.0" GridPane.columnIndex="3">
                            <GridPane.margin>
-                              <Insets bottom="170.0" left="700.0" />
+                              <Insets left="40.0" top="80.0" />
                            </GridPane.margin>
                         </JFXListView>
                      </children>
                   </GridPane>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="NEVER">
                      <children>
-                        <JFXButton buttonType="RAISED" maxWidth="200.0" ripplerFill="BLACK" text="Lisää">
+                        <JFXButton buttonType="RAISED" maxWidth="200.0" prefHeight="84.0" prefWidth="200.0" ripplerFill="BLACK" styleClass="jfx-button" stylesheets="@../CentralClasses/mainwindow.css" text="Lisää">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </JFXButton>
                      </children>
                      <padding>
-                        <Insets left="400.0" top="15.0" />
+                        <Insets right="150.0" top="15.0" />
                      </padding>
                   </VBox>
                </children>
             </VBox>
+         </content>
+      </ScrollPane>
          </children>
       </AnchorPane>
-   </content>
-</ScrollPane>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1100.0" minWidth="1300.0" prefHeight="1100.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visualization.ChartsController">
+  <content>
+    <AnchorPane minHeight="1100.0" minWidth="1300.0" prefHeight="1100.0" prefWidth="1300.0">
+         <children>
+            <PieChart fx:id="pieChart" labelLineLength="5.0" layoutX="137.0" layoutY="208.0" prefHeight="283.0" prefWidth="344.0" visible="false" />
+            <LineChart fx:id="lineChart" layoutX="807.0" layoutY="212.0" prefHeight="275.0" prefWidth="308.0" visible="false">
+              <xAxis>
+                <NumberAxis fx:id="linexAxis" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" side="BOTTOM" tickUnit="1.0" upperBound="8.0" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="lineyAxis" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" scaleShape="false" side="LEFT" tickUnit="1.0" upperBound="10.0" />
+              </yAxis>
+            </LineChart>
+            <BarChart fx:id="barChart" barGap="1.0" layoutX="807.0" layoutY="538.0" prefHeight="303.0" prefWidth="319.0" visible="false">
+              <xAxis>
+                <CategoryAxis fx:id="barxAxis" autoRanging="true" side="BOTTOM" tickLabelRotation="-38.0" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="baryAxis" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" side="LEFT" tickUnit="1.0" />
+              </yAxis>
+            </BarChart>
+            <LineChart fx:id="lineChart2" layoutX="800.0" layoutY="604.0" prefHeight="303.0" prefWidth="323.0" visible="false">
+              <xAxis>
+                <CategoryAxis fx:id="linexAxis2" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="lineyAxis2" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" scaleShape="false" side="LEFT" tickUnit="1.0" upperBound="10.0" />
+              </yAxis>
+            </LineChart>
+            <VBox prefHeight="1100.0" prefWidth="1300.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="1263.0">
+                     <children>
+                        <JFXCheckBox layoutX="74.0" layoutY="25.0" text="Ympyrä" />
+                        <JFXComboBox layoutX="74.0" layoutY="68.0" prefHeight="25.0" prefWidth="112.0" />
+                        <Label layoutX="23.0" layoutY="85.0" prefHeight="17.0" prefWidth="35.0" text="Vuosi" />
+                        <Label layoutX="276.0" layoutY="85.0" text="Vuosi" />
+                        <JFXCheckBox layoutX="306.0" layoutY="25.0" text="Viiva" />
+                        <JFXCheckBox layoutX="500.0" layoutY="25.0" text="Pylväs" />
+                        <JFXComboBox layoutX="326.0" layoutY="81.0" prefHeight="25.0" prefWidth="112.0" />
+                        <JFXComboBox layoutX="500.0" layoutY="90.0" prefHeight="25.0" prefWidth="112.0" />
+                        <JFXButton layoutX="300.0" layoutY="152.0" text="Piirrä" />
+                        <JFXButton layoutX="367.0" layoutY="152.0" text="Tyhjennä" />
+                        <JFXButton layoutX="486.0" layoutY="153.0" text="Piirrä" />
+                        <JFXButton layoutX="556.0" layoutY="153.0" text="Tyhjennä" />
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

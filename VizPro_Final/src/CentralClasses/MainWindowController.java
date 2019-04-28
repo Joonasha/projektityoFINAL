@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  *
@@ -39,7 +40,7 @@ public class MainWindowController implements Initializable {
     
     private DoubleProperty fontSize = new SimpleDoubleProperty(10);
     @FXML
-    private JFXButton SearchGrades;
+    public JFXButton SearchGrades;
     @FXML
     private JFXButton Login;
     @FXML
@@ -52,27 +53,21 @@ public class MainWindowController implements Initializable {
         Manual.setFocusTraversable(false);
         SearchGrades.setFocusTraversable(false);
         Login.setFocusTraversable(false);
-        title.setText("Gradujen visualisointi\r\n   \t    ty√∂kalu");
+        title.setText("Gradujen visualisointi\r\n   \t    tyˆkalu");
         
-        //hoida skaalaus t√§√§ll√§
-    //CreateGrade.prefWidthProperty().bind(AnchorPane.widthProperty().subtract(250));
-    //CreateGrade.prefHeightProperty().bind(AnchorPane.heightProperty().subtract(100));
-    //Text text = new Text(CreateGrade.getText());
-    //fontSize.bind(AnchorPane.widthProperty().add(AnchorPane.heightProperty()).divide(50));  
-    //text.setStyle("-fx-font: 40 Arial;");
-    //CreateGrade.setStyle("-fx-font-size: "+ fontSize.asString() + "px;");
-    //CreateGrade.setStyle(String.format("-fx-font-size: %dpx;", (int)(0.45 * CreateGrade.)));
     }    
 
     @FXML
     private void CreateGradeAction(ActionEvent event) throws IOException {
+        //t‰h‰n stagen luonti samoin kuin search gradesissa
         MainWindow.AddGradesScene();
     }
 
    
     @FXML
     private void SearchGradesAction(ActionEvent event) throws IOException {
-        MainWindow.SearchGradesScene();
+        Stage stage = (Stage) SearchGrades.getScene().getWindow();
+        MainWindow.SearchGradesScene(stage);
     }     
 
     @FXML
