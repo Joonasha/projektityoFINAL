@@ -53,7 +53,8 @@ public class MainWindow extends Application {
         launch(args);
     }
     
-    public static void AddGradesScene() throws IOException {
+    public static void AddGradesScene(Stage stage) throws IOException {
+        mainStage = stage;
         root = FXMLLoader.load(AddGradesController.class.getResource("AddGrades.fxml"));
         newScene = new Scene(root, 1000, 700);
         mainStage.setScene(newScene);
@@ -61,7 +62,7 @@ public class MainWindow extends Application {
     public static void VisualizeGradesScene() {
     	mainStage.setScene(newScene);
     }
-    public static void SearchGradesScene( Stage stage) throws IOException{
+    public static void SearchGradesScene(Stage stage) throws IOException{
         mainStage = stage;
         Parent root = FXMLLoader.load(SeachGradesController.class.getResource("SeachGrades.fxml"));
         newScene = new Scene(root, 1000, 700);  

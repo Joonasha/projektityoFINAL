@@ -59,8 +59,8 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void CreateGradeAction(ActionEvent event) throws IOException {
-        //tähän stagen luonti samoin kuin search gradesissa
-        MainWindow.AddGradesScene();
+        Stage stage = (Stage) CreateGrade.getScene().getWindow();
+        MainWindow.AddGradesScene(stage);
     }
 
    

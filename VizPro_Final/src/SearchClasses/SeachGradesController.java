@@ -5,9 +5,14 @@
  */
 package SearchClasses;
 
+import CentralClasses.MainWindow;
 import static CentralClasses.MainWindow.mainStage;
 import static CentralClasses.MainWindow.newScene;
 import CentralClasses.MainWindowController;
+import HelperClasses.Excel;
+import HelperClasses.Thesis;
+import HelperClasses.lists;
+import Visualization.ChartsController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -16,7 +21,10 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -29,6 +37,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -50,33 +60,20 @@ public class SeachGradesController implements Initializable {
 	JFXTextField nameTF = new JFXTextField();
 	@FXML
 	JFXTextField authorsTF = new JFXTextField();
-	@FXML
-	JFXListView<String> thesesLW = new JFXListView<String>();
-	@FXML
+        @FXML
+	ListView<String> thesesLW = new ListView<String>();
 	JFXListView<String> conceptsLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> sourceLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> methodLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> datamethodLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> subjectsLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> subject1subclassesLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> subject2subclassesLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> subject3subclassesLW = new JFXListView<String>();
-	@FXML
 	JFXListView<String> subject4subclassesLW = new JFXListView<String>();
-	@FXML
 	JFXCheckBox subject1CB = new JFXCheckBox();
-	@FXML
 	JFXCheckBox subject2CB = new JFXCheckBox();
-	@FXML
 	JFXCheckBox subject3CB = new JFXCheckBox();
-	@FXML
 	JFXCheckBox subject4CB = new JFXCheckBox();
 	@FXML
 	JFXComboBox<String> yearCB = new JFXComboBox<String>();
@@ -88,21 +85,13 @@ public class SeachGradesController implements Initializable {
 	JFXComboBox<String> languageCB = new JFXComboBox<String>();
 	@FXML
 	JFXComboBox<String> authorsCB = new JFXComboBox<String>();
-	@FXML
 	JFXComboBox<String> framework1CB = new JFXComboBox<String>();
-	@FXML
 	JFXComboBox<String> framework2CB = new JFXComboBox<String>();
-	@FXML
 	JFXComboBox<String> framework3CB = new JFXComboBox<String>();
-	@FXML
 	JFXComboBox<String> framework4CB = new JFXComboBox<String>();
-	@FXML
 	JFXTextArea subject1 = new JFXTextArea();
-	@FXML
 	JFXTextArea subject2 = new JFXTextArea();
-	@FXML
 	JFXTextArea subject3 = new JFXTextArea();
-	@FXML
 	JFXTextArea subject4 = new JFXTextArea();
     @FXML
     private VBox vbox1;
@@ -142,6 +131,18 @@ public class SeachGradesController implements Initializable {
     private Label lanquageLabel;
     @FXML
     private Label amountLabel;
+    	int i;
+	ObservableList<String> nameTheses = FXCollections.observableArrayList();
+	String excelSource = "Testiaineisto.xlsx";
+	ArrayList<Thesis> theses = Excel.readData(excelSource);
+	ArrayList<String> names = new ArrayList<String>();
+	ArrayList<String> tmpSubjects = new ArrayList<String>();
+	ArrayList<String> tmpConcepts = new ArrayList<String>();
+	ArrayList<String> tmpDatamethods = new ArrayList<String>();    
+    @FXML
+    private Label title;
+    @FXML
+    private JFXButton VisualizationButton;
     /**
      * Initializes the controller class.
      */
@@ -152,7 +153,187 @@ public class SeachGradesController implements Initializable {
         anchorpane.setStyle("-fx-background-color:#94E2F7");
         vboxMain.setStyle("-fx-background-color:white");
         
+        
+		listTheses();
+		thesesLW.setItems(nameTheses);
+		yearCB.setItems(lists.listYears); 
+		levelCB.setItems(lists.listLevels);
+		typeCB.setItems(lists.listTypes);
+		languageCB.setItems(lists.listLanguages);
+		authorsCB.setItems(lists.listNumberofAuthors);
+		framework1CB.setItems(lists.subject1frameworks);
+		framework2CB.setItems(lists.subject2frameworks);
+		framework3CB.setItems(lists.subject3frameworks);
+		framework4CB.setItems(lists.subject4frameworks);
+		subject1subclassesLW.setItems(lists.subject1subclasses);
+		subject1subclassesLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		subject2subclassesLW.setItems(lists.subject2subclasses);
+		subject2subclassesLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		subject3subclassesLW.setItems(lists.subject3subclasses);
+		subject3subclassesLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		subject4subclassesLW.setItems(lists.subject4subclasses);
+		subject4subclassesLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		subjectsLW.setItems(lists.listSubjects);
+		subject1.setText(lists.listSubjects.get(0));
+		subject2.setText(lists.listSubjects.get(1));
+		subject3.setText(lists.listSubjects.get(2));
+		subject4.setText(lists.listSubjects.get(3));
+		sourceLW.setItems(lists.listSources);
+		sourceLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		conceptsLW.setItems(lists.listConcepts);
+		conceptsLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		methodLW.setItems(lists.listMethods);
+		methodLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		datamethodLW.setItems(lists.listDatamethods);
+		datamethodLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);        
+        
     }    
+    
+	public void listTheses() {
+		for(Thesis e : theses) {
+			nameTheses.add(e.getName());
+		}
+	}
+	
+        @FXML
+	public void updateList() {
+		thesesLW.getItems().clear();
+		names.clear();
+		for(Thesis e : theses) {
+			if(checkYear(e)) {
+				if(checkType(e)) {
+					if(checkLevel(e)) {
+						if(checkLanguage(e)) {
+							if(checkNumberofauthors(e)) {
+								if(checkResearchsubjects(e)) {
+									if(checkResearchConcepts(e)) {
+										names.add(e.getName());
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		thesesLW.setItems(FXCollections.observableArrayList(names));	
+	}
+	
+	public boolean checkYear(Thesis e) {
+		if(yearCB.getValue()==null) {
+			return true;
+		} else if(yearCB.getValue().equals(e.getYear().substring(0,4))) {
+			return true;
+		} else
+			return false;
+	}
+            
+	public boolean checkType(Thesis e) {
+		if(typeCB.getValue()==null) {
+			return true;
+		} else if(typeCB.getValue().equals(e.getType())) {
+			return true;
+		} else 
+			return false;
+	}
+	public boolean checkLevel(Thesis e) {
+		if(levelCB.getValue()==null) {
+			return true;
+		} else if(levelCB.getValue().equals(e.getLevel())) {
+			return true;
+		} else 
+			return false;
+	}
+	public boolean checkLanguage(Thesis e) {
+		if(languageCB.getValue()==null) {
+			return true;
+		} else if(languageCB.getValue().equals(e.getLanguage())) {
+			return true;
+		} else 
+			return false;
+	}
+	public boolean checkNumberofauthors(Thesis e) {
+		if(authorsCB.getValue()==null) {
+			return true;
+		} else if(authorsCB.getValue().equals(e.getAuthorcount())) {
+			return true;
+		} else 
+			return false;
+	}
+	public boolean checkResearchsubjects(Thesis e) {
+		for(i=0;i<e.getResearchSubjects().length;i++) {
+			tmpSubjects.add(e.getResearchSubjects()[i]);
+		}
+		if(!subject1CB.isSelected() &&
+				!subject2CB.isSelected() &&
+				!subject3CB.isSelected() &&
+				!subject4CB.isSelected()) {
+			tmpSubjects.clear();
+			return true;
+		} else if (subject1CB.isSelected() && tmpSubjects.contains(lists.listSubjects.get(0))) {
+			tmpSubjects.clear();
+			return true;
+		} else if (subject2CB.isSelected() && tmpSubjects.contains(lists.listSubjects.get(1))) {
+			tmpSubjects.clear();
+			return true;
+		} else if (subject3CB.isSelected() && tmpSubjects.contains(lists.listSubjects.get(2))) {
+			tmpSubjects.clear();
+			return true;
+		} else if (subject4CB.isSelected() && tmpSubjects.contains(lists.listSubjects.get(3))) {
+			tmpSubjects.clear();
+			return true;
+		} else 
+			tmpSubjects.clear();
+			return false;
+	}
+	public boolean checkResearchConcepts(Thesis e) {
+		tmpConcepts.clear();
+		if(!conceptsLW.getSelectionModel().isEmpty()) {
+			if(e.getResearchConcepts()!=null)
+			for(i=0;i<e.getResearchConcepts().length;i++) {
+				tmpConcepts.add(e.getResearchConcepts()[i]);
+			}
+		}	
+		if(conceptsLW.getSelectionModel().isEmpty()) {
+			tmpConcepts.clear();
+			return true;
+		}
+		if(tmpConcepts.contains(conceptsLW.getSelectionModel().getSelectedItem())) {
+			tmpConcepts.clear();
+			return true;
+		} else 
+			System.out.println(tmpConcepts);
+			tmpConcepts.clear();
+			return false;
+	}
+	
+        @FXML
+	public void visualize() throws IOException {
+		lists.visualTheses.clear();
+		for(Thesis t : theses) {
+			if(thesesLW.getItems().contains(t.getName())) {
+				lists.visualTheses.add(t);
+			}
+		}
+		if(!yearCB.getSelectionModel().isEmpty()) {
+			for(String s : lists.listYears) {
+				if(!yearCB.getSelectionModel().getSelectedItem().contentEquals(s)) {
+					ChartsController.selectedYears.add(s);
+					ChartsController.filtered=true;
+					ChartsController.filteredYear=yearCB.getSelectionModel().getSelectedItem();
+				}
+			}
+		}
+		VisualizationScene();		
+	}        
+        private void VisualizationScene() throws IOException {
+        mainStage = (Stage) VisualizationButton.getScene().getWindow();          
+        ScrollPane root = (ScrollPane) FXMLLoader.load(ChartsController.class.getResource("Charts.fxml"));
+        newScene = new Scene(root, 1000, 700);  
+        mainStage.setScene(newScene);
+        }
+        
     @FXML
     private void GeneralAction(ActionEvent event) {
         contentMain.getChildren().clear();
@@ -208,8 +389,7 @@ public class SeachGradesController implements Initializable {
         contentMain.getChildren().addAll(content1,content2,content3,content4);
   
     }
-    private void SetupParaContent1(){
-        subject1CB = new JFXCheckBox();        
+    private void SetupParaContent1(){        
         subject1CB.setMnemonicParsing(false);
         subject1CB.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -219,14 +399,11 @@ public class SeachGradesController implements Initializable {
     }
 });
         subject1CB.setText("Lisää hakuun");
-        subject1 = new JFXTextArea();
         subject1.prefHeight(38.0);
         subject1.prefWidth(100.0);
         subject1.setPadding(new Insets(0,0,80,0));
-        subject1subclassesLW = new JFXListView();
         subject1subclassesLW.prefHeight(120.0);
         subject1subclassesLW.prefWidth(150.0);  
-        framework1CB = new JFXComboBox();
         framework1CB.prefWidthProperty().bind(content1.widthProperty());
         framework1CB.maxWidth(750.0);
      
@@ -383,6 +560,7 @@ public class SeachGradesController implements Initializable {
 
     @FXML
     public void BackToMainAction(ActionEvent event) throws IOException {
+        mainStage = (Stage) BackToMain.getScene().getWindow();
         Parent root = FXMLLoader.load(MainWindowController.class.getResource("MainWindow.fxml"));
         newScene = new Scene(root, 1000, 700);  
         mainStage.setScene(newScene);        

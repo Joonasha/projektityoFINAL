@@ -1,3 +1,4 @@
+/*
 package Visualization;
 
 import javafx.application.Application;
@@ -5,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -18,10 +18,6 @@ import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -37,7 +33,7 @@ import HelperClasses.Excel;
 import HelperClasses.Thesis;
 import HelperClasses.lists;
 
-public class ChartsController {
+public class ChartsControllerINT {
 	ObservableList<String> lineChartYears = FXCollections.observableArrayList(lists.listYears);
 	ObservableList<PieChart.Data> piechartdata = FXCollections.observableArrayList();
 	
@@ -46,16 +42,15 @@ public class ChartsController {
 	ArrayList<ChartSubject> chartValues = new ArrayList<ChartSubject>();
 	static ArrayList<Thesis> visualTheses;
 	static ArrayList<Thesis> theses;
-	int numberofCharts=0;
+	int numberofCharts;
 	String year;
 	public static String filteredYear;
 	int[] thesesBySelection, allTheses;
-	int comparison;
 	LineChart.Data<Number, Number> lineChartPGrades;
-	LineChart.Data<String, Number> lineChartPGradesstring;
+	LineChart.Data<Number, Number> lineChartDGrades;
+	LineChart.Data<Number, Number> lineChartSubjects;
 	BarChart.Data<String, Number> barChartData1, barChartData2, barChartData3, barChartData4, barChartData5;
 	XYChart.Series<Number, Number> linechartSeries;
-	XYChart.Series<String, Number> linechartSeriesstring;
 	XYChart.Series<String, Number> barchartSeries1, barchartSeries2, barchartSeries3, barchartSeries4, barchartSeries5;
 	boolean drawn = false, barDrawn = false;
 	public static boolean filtered=false;
@@ -75,8 +70,6 @@ public class ChartsController {
 	@FXML
 	Button fillBarchart = new Button();
 	@FXML
-	Button fillLinechart = new Button();
-	@FXML
 	Button clearBarchart = new Button();
 	@FXML
 	ComboBox<String> chartType = new ComboBox<String>();
@@ -87,33 +80,25 @@ public class ChartsController {
 	@FXML
 	ComboBox<String> lineYear = new ComboBox<String>();
 	@FXML
+	ComboBox<String> lineSubject = new ComboBox<String>();
+	@FXML
 	ComboBox<String> barOption = new ComboBox<String>();
 	@FXML
 	PieChart pieChart;
 	@FXML
 	LineChart<Number, Number> lineChart;
 	@FXML
-	LineChart<String, Number> lineChart2;
-	@FXML
 	NumberAxis linexAxis = new NumberAxis();
 	@FXML
-	CategoryAxis linexAxis2 = new CategoryAxis();
-	@FXML
 	NumberAxis lineyAxis = new NumberAxis(0, 100, 2);
-	@FXML
-	NumberAxis lineyAxis2 = new NumberAxis();
 	@FXML
 	NumberAxis baryAxis = new NumberAxis(0, 10, 1);
 	@FXML
 	CategoryAxis barxAxis = new CategoryAxis();
-	
 	@FXML
 	BarChart<String, Number> barChart;
 	
-	
-	
 	public void initialize() {
-		
 		lineyAxis.setTickUnit(1);
 		lineChartYears.add("Kaikki");
 		String excelSource = "Testiaineisto.xlsx";
@@ -123,11 +108,8 @@ public class ChartsController {
 		barChart.setAnimated(false);
 		baryAxis.setUpperBound(10);
 		barOption.setItems(FXCollections.observableArrayList("Vuosi", "Arvosana"));
-		fillBarchart.setDisable(true);
-		fillLinechart.setDisable(true);
 		
 		lineYear.setItems(lineChartYears);
-		linexAxis2.setCategories(lists.listGrades);
 		
 		pieData.setItems(lists.chartSubjects);
 		pieChart.setLegendSide(Side.BOTTOM);
@@ -140,31 +122,31 @@ public class ChartsController {
 	}
 	
 	@FXML
-	public void enableBarChart() {
-		fillBarchart.setDisable(false);
+	public void checkSelection() {
+		lineSubject.setDisable(false);
+		lineYear.setDisable(false);
+		if(!lineYear.getSelectionModel().isEmpty()) {
+			lineSubject.setDisable(true);
+		} else if(!lineSubject.getSelectionModel().isEmpty()) {
+			lineYear.setDisable(true);
+		}
 	}
 	
-	
 	@FXML
-	public void enableLineChart() {
-		fillLinechart.setDisable(false);
-	}
-	
-	@FXML
-	public void clearLineChart() {
+	public void clearChart() {
 		if(!filtered) {
 			selectedYears.clear();
 		}
 		if(filteredYear!=null) {
 			selectedYears.remove(selectedYears.indexOf(filteredYear));
 		}
+
+		lineYear.getSelectionModel().clearSelection();
+		lineSubject.getSelectionModel().clearSelection();
 		lineChart.setTitle("");
 		lineyAxis.setLabel("");
 		lineyAxis.setUpperBound(10);
-		lineyAxis2.setLabel("");
-		lineyAxis2.setUpperBound(10);
 		lineChart.getData().clear();
-		lineChart2.getData().clear();
 	}
 	
 	@FXML
@@ -195,24 +177,21 @@ public class ChartsController {
 			for(String g : lists.listGrades) {
 				thesesBySelection = new int[5];
 				for(Thesis t : visualTheses) {
-					if(t.getPggrade()!=null) {
-						if(t.getResearchSubjects().length>1&&Integer.valueOf(g.substring(0,1))==Integer.valueOf(t.getPggrade().substring(0,1))) {
-							thesesBySelection[4]++;
-						}
-						if(t.getResearchSubjects()[0].startsWith("1")&&Integer.valueOf(g.substring(0,1))==Integer.valueOf(t.getPggrade().substring(0,1))) {
-							thesesBySelection[0]++;
-						}
-						if(t.getResearchSubjects()[0].startsWith("2")&&Integer.valueOf(g.substring(0,1))==Integer.valueOf(t.getPggrade().substring(0,1))) {
-							thesesBySelection[1]++;
-						}
-						if(t.getResearchSubjects()[0].startsWith("3")&&Integer.valueOf(g.substring(0,1))==Integer.valueOf(t.getPggrade().substring(0,1))) {
-							thesesBySelection[2]++;
-						}
-						if(t.getResearchSubjects()[0].startsWith("4")&&Integer.valueOf(g.substring(0,1))==Integer.valueOf(t.getPggrade().substring(0,1))) {
-							thesesBySelection[3]++;
-						}
+					if(t.getResearchSubjects().length>1&&Integer.valueOf(g.substring(0,1))==t.getPggrade()) {
+						thesesBySelection[4]++;
 					}
-					
+					if(t.getResearchSubjects()[0].startsWith("1")&&Integer.valueOf(g.substring(0,1))==t.getPggrade()) {
+						thesesBySelection[0]++;
+					}
+					if(t.getResearchSubjects()[0].startsWith("2")&&Integer.valueOf(g.substring(0,1))==t.getPggrade()) {
+						thesesBySelection[1]++;
+					}
+					if(t.getResearchSubjects()[0].startsWith("3")&&Integer.valueOf(g.substring(0,1))==t.getPggrade()) {
+						thesesBySelection[2]++;
+					}
+					if(t.getResearchSubjects()[0].startsWith("4")&&Integer.valueOf(g.substring(0,1))==t.getPggrade()) {
+						thesesBySelection[3]++;
+					}
 				}
 				for (int t : thesesBySelection) {
 					if (t > highest) {
@@ -295,276 +274,128 @@ public class ChartsController {
 			barDrawn=true;
 		}
 		
-	}
+	}	
 	
 	@FXML
 	public void fillLineChart() {
-		if(numberofCharts<2) {
-			linechartSeriesstring = new XYChart.Series<String, Number>();
-			lineChart2.setTitle("Arvosanojen jakauma vuoden mukaan");
-			
-			lineyAxis2.setLabel("Graduja");
-			linexAxis2.setLabel("Arvosana");
-			
-			int i = 0, highest = 0;
+		checkSelection();
+		linechartSeries = new XYChart.Series<Number, Number>();
+		lineChart.setTitle("Arvosanojen jakauma vuoden mukaan");
+		
+		lineyAxis.setLabel("Graduja");
+		linexAxis.setLabel("Arvosana");
+		
+		int i = 0, highest = 0;
 
-			allTheses = new int[7];
-			thesesBySelection = new int[7];
-			comparison = 0;
-			for (Thesis t : visualTheses) {
-				if(t.getPggrade()!=null) {
-					
-					comparison = Integer.valueOf(t.getPggrade().substring(0,1));
-					switch (comparison) {
-					case 1:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[0]++;
-						}
-						allTheses[0]++;
-						break;
-					case 2:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[1]++;
-						}
-						allTheses[1]++;
-						break;
-					case 3:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[2]++;
-						}
-						allTheses[2]++;
-						break;
-					case 4:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[3]++;
-						}
-						allTheses[3]++;
-						break;
-					case 5:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[4]++;
-						}
-						allTheses[4]++;
-						break;
-					case 6:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[5]++;
-						}
-						allTheses[5]++;
-						break;
-					case 7:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[6]++;
-						}
-						allTheses[6]++;
-						break;
-					}
+		allTheses = new int[7];
+		thesesBySelection = new int[7];
+		for (Thesis t : visualTheses) {
+			switch (t.getPggrade()) {
+			case 1:
+				if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
+					thesesBySelection[0]++;
 				}
-			}
-			
-			for(int c=0;allTheses.length>c;c++) {
-				System.out.println(c+" "+thesesBySelection[c]);
-				System.out.println(c+" " +allTheses[c]);
-			}
-			
-			if (lineYear.getSelectionModel().getSelectedItem() != null) {
-				highest = 0;
-				for (int t : thesesBySelection) {
-					if (t > highest) {
-						highest = t;
-					}
+				allTheses[0]++;
+				break;
+			case 2:
+				if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
+					thesesBySelection[1]++;
 				}
-				lineyAxis2.setUpperBound(highest + 5);
-				for (Thesis t : visualTheses) {
-					year = t.getYear();
-					if(t.getPggrade()!=null) {
-						comparison = Integer.valueOf(t.getPggrade().substring(0,1));
-						switch (comparison) {
-						case 1:
-							lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(0), thesesBySelection[0]);
-							break;
-						case 2:
-							lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(1), thesesBySelection[1]);
-							break;
-						case 3:
-							lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(2), thesesBySelection[2]);
-							break;
-						case 4:
-							lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(3), thesesBySelection[3]);
-							break;
-						case 5:
-							lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(4), thesesBySelection[4]);
-							break;
-						case 6:
-							lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(5), thesesBySelection[5]);
-							break;
-						case 7:
-							lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(6), thesesBySelection[6]);
-							break;
-						}
-					}
-					
-					if (lineYear.getSelectionModel().getSelectedItem().equals(year)&&t.getPggrade()!=null) {
-						if (!drawn && lineChartPGradesstring != null
-								&& !selectedYears.contains(lineYear.getSelectionModel().getSelectedItem())) {
-							linechartSeriesstring.getData().add(lineChartPGradesstring);
-							linechartSeriesstring.setName(year);
-						}
-					}
+				allTheses[1]++;
+				break;
+			case 3:
+				if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
+					thesesBySelection[2]++;
 				}
-			}		
-			if (lineYear.getSelectionModel().getSelectedItem()!=null&&lineYear.getSelectionModel().getSelectedItem().equals("Kaikki")) {
-				highest = 0;
-				for (int t : allTheses) {
-					if (t > highest) {
-						highest = t;
-					}
-				}			
-				lineyAxis2.setUpperBound(highest + 5);
-				for (i = 0; i < allTheses.length; i++) {
-					lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(i), allTheses[i]);
-					linechartSeriesstring.getData().add(lineChartPGradesstring);
-					linechartSeriesstring.setName("Kaikki");
+				allTheses[2]++;
+				break;
+			case 4:
+				if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
+					thesesBySelection[3]++;
 				}
-			}
-			if (!selectedYears.contains(lineYear.getSelectionModel().getSelectedItem())) {
-				System.out.println("ASD1");
-				lineChart2.getData().add(linechartSeriesstring);
-				System.out.println("ASD2");
-				selectedYears.add(lineYear.getSelectionModel().getSelectedItem());
-				System.out.println("ASD3");
-			}
-		} else {
-			linechartSeries = new XYChart.Series<Number, Number>();
-			lineChart.setTitle("Arvosanojen jakauma vuoden mukaan");
-			
-			lineyAxis.setLabel("Graduja");
-			linexAxis.setLabel("Arvosana");
-			
-			int i = 0, highest = 0;
-
-			allTheses = new int[7];
-			thesesBySelection = new int[7];
-			for (Thesis t : visualTheses) {
-				if(t.getPggrade()!=null) {
-					comparison = Integer.valueOf(t.getPggrade().substring(0,1));
-					switch (comparison) {
-					case 1:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[0]++;
-						}
-						allTheses[0]++;
-						break;
-					case 2:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[1]++;
-						}
-						allTheses[1]++;
-						break;
-					case 3:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[2]++;
-						}
-						allTheses[2]++;
-						break;
-					case 4:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[3]++;
-						}
-						allTheses[3]++;
-						break;
-					case 5:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[4]++;
-						}
-						allTheses[4]++;
-						break;
-					case 6:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[5]++;
-						}
-						allTheses[5]++;
-						break;
-					case 7:
-						if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
-							thesesBySelection[6]++;
-						}
-						allTheses[6]++;
-						break;
-					}
+				allTheses[3]++;
+				break;
+			case 5:
+				if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
+					thesesBySelection[4]++;
 				}
-			}
-			for(int c=0;allTheses.length>c;c++) {
-				System.out.println(thesesBySelection[c]);
-				System.out.println(allTheses[c]);
-			}
-
-			if (lineYear.getSelectionModel().getSelectedItem() != null) {
-				highest = 0;
-				for (int t : thesesBySelection) {
-					if (t > highest) {
-						highest = t;
-					}
+				allTheses[4]++;
+				break;
+			case 6:
+				if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
+					thesesBySelection[5]++;
 				}
-				lineyAxis.setUpperBound(highest + 5);
-				for (Thesis t : visualTheses) {
-					year = t.getYear();
-					if(t.getPggrade()!=null) {
-						comparison = Integer.valueOf(t.getPggrade().substring(0,1));
-						switch (comparison) {
-						case 1:
-							lineChartPGrades = new XYChart.Data<Number, Number>(Integer.valueOf(t.getPggrade().substring(0,1)), thesesBySelection[0]);
-							break;
-						case 2:
-							lineChartPGrades = new XYChart.Data<Number, Number>(Integer.valueOf(t.getPggrade().substring(0,1)), thesesBySelection[1]);
-							break;
-						case 3:
-							lineChartPGrades = new XYChart.Data<Number, Number>(Integer.valueOf(t.getPggrade().substring(0,1)), thesesBySelection[2]);
-							break;
-						case 4:
-							lineChartPGrades = new XYChart.Data<Number, Number>(Integer.valueOf(t.getPggrade().substring(0,1)), thesesBySelection[3]);
-							break;
-						case 5:
-							lineChartPGrades = new XYChart.Data<Number, Number>(Integer.valueOf(t.getPggrade().substring(0,1)), thesesBySelection[4]);
-							break;
-						case 6:
-							lineChartPGrades = new XYChart.Data<Number, Number>(Integer.valueOf(t.getPggrade().substring(0,1)), thesesBySelection[5]);
-							break;
-						case 7:
-							lineChartPGrades = new XYChart.Data<Number, Number>(Integer.valueOf(t.getPggrade().substring(0,1)), thesesBySelection[6]);
-							break;
-						}
-					}
-					
-					if (lineYear.getSelectionModel().getSelectedItem().equals(year)&&t.getPggrade()!=null) {
-						if (!drawn && lineChartPGrades != null
-								&& !selectedYears.contains(lineYear.getSelectionModel().getSelectedItem())) {
-							linechartSeries.getData().add(lineChartPGrades);
-							linechartSeries.setName(year);
-						}
-					}
+				allTheses[5]++;
+				break;
+			case 7:
+				if (t.getYear().equals(lineYear.getSelectionModel().getSelectedItem())) {
+					thesesBySelection[6]++;
 				}
-			}		
-			if (lineYear.getSelectionModel().getSelectedItem()!=null&&lineYear.getSelectionModel().getSelectedItem().equals("Kaikki")) {
-				highest = 0;
-				for (int t : allTheses) {
-					if (t > highest) {
-						highest = t;
-					}
-				}			
-				lineyAxis.setUpperBound(highest + 5);
-				for (i = 0; i < allTheses.length; i++) {
-					lineChartPGrades = new XYChart.Data<Number, Number>(i + 1, allTheses[i]);
-					linechartSeries.getData().add(lineChartPGrades);
-					linechartSeries.setName("Kaikki");
-				}
-			}
-			if (!selectedYears.contains(lineYear.getSelectionModel().getSelectedItem())) {
-				lineChart.getData().add(linechartSeries);
-				selectedYears.add(lineYear.getSelectionModel().getSelectedItem());
+				allTheses[6]++;
+				break;
 			}
 		}
-		
+
+		if (lineYear.getSelectionModel().getSelectedItem() != null) {
+			highest = 0;
+			for (int t : thesesBySelection) {
+				if (t > highest) {
+					highest = t;
+				}
+			}
+			lineyAxis.setUpperBound(highest + 5);
+			for (Thesis t : visualTheses) {
+				year = t.getYear();
+				switch (t.getPggrade()) {
+				case 1:
+					lineChartPGrades = new XYChart.Data<Number, Number>(t.getPggrade(), thesesBySelection[0]);
+					break;
+				case 2:
+					lineChartPGrades = new XYChart.Data<Number, Number>(t.getPggrade(), thesesBySelection[1]);
+					break;
+				case 3:
+					lineChartPGrades = new XYChart.Data<Number, Number>(t.getPggrade(), thesesBySelection[2]);
+					break;
+				case 4:
+					lineChartPGrades = new XYChart.Data<Number, Number>(t.getPggrade(), thesesBySelection[3]);
+					break;
+				case 5:
+					lineChartPGrades = new XYChart.Data<Number, Number>(t.getPggrade(), thesesBySelection[4]);
+					break;
+				case 6:
+					lineChartPGrades = new XYChart.Data<Number, Number>(t.getPggrade(), thesesBySelection[5]);
+					break;
+				case 7:
+					lineChartPGrades = new XYChart.Data<Number, Number>(t.getPggrade(), thesesBySelection[6]);
+					break;
+				}
+				if (lineYear.getSelectionModel().getSelectedItem().equals(year)) {
+					if (!drawn && lineChartPGrades != null
+							&& !selectedYears.contains(lineYear.getSelectionModel().getSelectedItem())) {
+						linechartSeries.getData().add(lineChartPGrades);
+						linechartSeries.setName(year);
+					}
+				}
+			}
+		}		
+		if (lineYear.getSelectionModel().getSelectedItem()!=null&&lineYear.getSelectionModel().getSelectedItem().equals("Kaikki")) {
+			highest = 0;
+			for (int t : allTheses) {
+				if (t > highest) {
+					highest = t;
+				}
+			}			
+			lineyAxis.setUpperBound(highest + 5);
+			for (i = 0; i < allTheses.length; i++) {
+				lineChartPGrades = new XYChart.Data<Number, Number>(i + 1, allTheses[i]);
+				linechartSeries.getData().add(lineChartPGrades);
+				linechartSeries.setName("Kaikki");
+			}
+		}
+		if (!selectedYears.contains(lineYear.getSelectionModel().getSelectedItem())) {
+			lineChart.getData().add(linechartSeries);
+			selectedYears.add(lineYear.getSelectionModel().getSelectedItem());
+		}
 	}
 	
 	@FXML
@@ -690,12 +521,12 @@ public class ChartsController {
 			}
 			ChartSubject multiple3 = new ChartSubject("8. Enemmän kuin yksi hakumenetelmä", 0);
 			for(Thesis t : visualTheses) {
-				if(t.getSources()!=null) {
-					if(t.getSources().length>1) {
+				if(t.getSource()!=null) {
+					if(t.getSource().length>1) {
 						multiple3.setValue(multiple3.getValue()+1);
 					} else {
 						for(ChartSubject c : chartValues) {
-							if(t.getSources()[0].substring(0, 1).equals(c.getName().substring(0, 1))) {
+							if(t.getSource()[0].substring(0, 1).equals(c.getName().substring(0, 1))) {
 								c.setValue(c.getValue()+1);
 							}
 						}
@@ -727,23 +558,20 @@ public class ChartsController {
 				}
 			}
 			for(Thesis t : visualTheses) {
-				if(t.getPggrade()!=null) {
-					comparison=Integer.valueOf(t.getPggrade().substring(0,1));
-					for(ChartSubject c : chartValues) {
-						if(comparison==(c.getGrade())) {
-							c.setValue(c.getValue()+1);
-						}
+				for(ChartSubject c : chartValues) {
+					if(t.getPggrade()==(c.getGrade())) {
+						c.setValue(c.getValue()+1);
 					}
 				}
-				
 			}
 			for(ChartSubject c : chartValues) {
+				System.out.println(c.getValue());
 				piechartdata.add(new PieChart.Data(c.getName(), c.getValue()));
 			}
 			pieChart.setTitle("Pro-graduja per arvosana");
 			break;
 		case 9:
-			for(String s : lists.doctorateGrades) {
+			for(String s : lists.listGrades) {
 				if(s.startsWith("1")) {
 					chartValues.add(new ChartSubject("1. kiittäen hyväksytty", 0, 1));
 				} else if(s.startsWith("2")) {
@@ -751,12 +579,9 @@ public class ChartsController {
 				} 
 			}
 			for(Thesis t : visualTheses) {
-				if(t.getDtgrade()!=null) {
-					comparison=Integer.valueOf(t.getDtgrade());
-					for(ChartSubject c : chartValues) {
-						if(comparison==(c.getGrade())) {
-							c.setValue(c.getValue()+1);
-						}
+				for(ChartSubject c : chartValues) {
+					if(t.getDtgrade()==(c.getGrade())) {
+						c.setValue(c.getValue()+1);
 					}
 				}
 			}
@@ -778,6 +603,9 @@ public class ChartsController {
 		} else {
 			barChart.setVisible(false);
 		}
+		if(radarC.isSelected()) {
+			numberofCharts++;
+		}
 		if(pieC.isSelected()) {
 			numberofCharts++;
 			pieChart.setVisible(true);
@@ -790,81 +618,90 @@ public class ChartsController {
 			lineChart.setVisible(false);
 		switch(numberofCharts) {
 		case 0:
-			//clearLineChart();
 			break;
 		case 1:
-			//clearLineChart();
-			fillLineChart();
 			if(barC.isSelected()) {
 				barChart.setLayoutX(100);
 				barChart.setLayoutY(200);
 				barChart.setPrefSize(1000, 600);
-				barxAxis.setTickLabelsVisible(true);
 			} 
 			if(pieC.isSelected()) {
-				pieChart.setLayoutX(100);
+				pieChart.setLayoutX(250);
 				pieChart.setLayoutY(200);
-				pieChart.setPrefSize(1000, 600);
-				pieChart.setLabelsVisible(true);
+				pieChart.setPrefSize(600, 600);
 			} 
 			if(lineC.isSelected()) {
-				lineChart.setVisible(false);
-				lineChart2.setVisible(true);
-				lineChart2.setLayoutX(100);
-				lineChart2.setLayoutY(200);
-				lineChart2.setPrefSize(1000, 600);
-			} 	
+				lineChart.setLayoutX(250);
+				lineChart.setLayoutY(200);
+				lineChart.setPrefSize(600, 600);
+			} 
+			if(radarC.isSelected()) {
+				
+			}
+				
 			break;
 		case 2:
-			//clearLineChart();
-			fillLineChart();
-			if(barC.isSelected()) {
+			if(barC.isSelected()&&lineC.isSelected()) {
+				barChart.setLayoutX(100);
+				barChart.setLayoutY(200);
+				barChart.setPrefSize(500, 500);
+			} else if(barC.isSelected()) {
 				barChart.setLayoutX(650);
 				barChart.setLayoutY(200);
 				barChart.setPrefSize(500, 500);
-				barxAxis.setTickLabelsVisible(true);
-			} 
+			}
 			if(pieC.isSelected()) {
 				pieChart.setLayoutX(100);
 				pieChart.setLayoutY(200);
 				pieChart.setPrefSize(500, 500);
-				pieChart.setLabelsVisible(false);
 			} 
-			if(lineC.isSelected()&&barC.isSelected()) {
-				lineChart.setVisible(true);
-				lineChart2.setVisible(false);
-				lineChart.setLayoutX(100);
-				lineChart.setLayoutY(200);
-				lineChart.setPrefSize(500, 500);
-			} else if(lineC.isSelected()) {
-				lineChart.setVisible(true);
-				lineChart2.setVisible(false);
+			if(lineC.isSelected()) {
 				lineChart.setLayoutX(650);
 				lineChart.setLayoutY(200);
 				lineChart.setPrefSize(500, 500);
+			} 
+			if(radarC.isSelected()) {
 			}
 			break;
 		case 3:
-			//clearLineChart();
-			fillLineChart();
 			if(barC.isSelected()) {
 				barChart.setLayoutX(700);
 				barChart.setLayoutY(300);
-				barChart.setPrefSize(300, 400);
-				barxAxis.setTickLabelsVisible(false);
+				barChart.setPrefSize(300, 300);
 			} 
 			if(pieC.isSelected()) {
 				pieChart.setLayoutX(100);
 				pieChart.setLayoutY(300);
-				pieChart.setPrefSize(300, 400);
-				pieChart.setLabelsVisible(false);
+				pieChart.setPrefSize(300, 300);
 			} 
 			if(lineC.isSelected()) {
 				lineChart.setLayoutX(400);
 				lineChart.setLayoutY(300);
-				lineChart.setPrefSize(300, 400);
+				lineChart.setPrefSize(300, 300);
 			} 
+			if(radarC.isSelected()) {
+			}
+			break;
+		case 4:
+			if(barC.isSelected()) {
+				barChart.setLayoutX(100);
+				barChart.setLayoutY(600);
+				barChart.setPrefSize(400, 400);
+			} 
+			if(pieC.isSelected()) {
+				pieChart.setLayoutX(100);
+				pieChart.setLayoutY(150);
+				pieChart.setPrefSize(400, 400);
+			} 
+			if(lineC.isSelected()) {
+				lineChart.setLayoutX(600);
+				lineChart.setLayoutY(150);
+				lineChart.setPrefSize(400, 400);
+			} 
+			if(radarC.isSelected()) {
+			}
 			break;
 		}
 	}
 }
+*/
