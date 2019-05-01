@@ -24,7 +24,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@seachgrades.css" HBox.hgrow="ALWAYS" />
-            <VBox fx:id="vboxMain" prefHeight="700.0" prefWidth="900.0" styleClass="vbox" stylesheets="@seachgrades.css">
+            <VBox fx:id="vboxMain" prefHeight="700.0" prefWidth="1100.0" styleClass="vbox" stylesheets="@seachgrades.css">
                <children>
                   <VBox alignment="CENTER" prefHeight="223.0" prefWidth="628.0">
                      <children>
@@ -154,19 +154,19 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="258.0" prefWidth="628.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ListView fx:id="thesesLW" prefHeight="218.0" prefWidth="745.0">
+                        <ListView fx:id="thesesLW" prefHeight="218.0" prefWidth="850.0" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets left="3.0" />
                            </padding>
                         </ListView>
-                        <VBox prefHeight="218.0" prefWidth="250.0" HBox.hgrow="SOMETIMES">
+                        <VBox prefHeight="218.0" prefWidth="190.0" HBox.hgrow="NEVER">
                            <children>
-                              <JFXButton alignment="CENTER" onAction="#updateList" prefHeight="10000.0" prefWidth="10000.0" text="Hae" VBox.vgrow="ALWAYS">
+                              <JFXButton alignment="CENTER" onAction="#updateList" prefHeight="10000.0" prefWidth="10000.0" text="Hae" VBox.vgrow="NEVER">
                                  <VBox.margin>
                                     <Insets bottom="3.0" right="3.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton fx:id="VisualizationButton" alignment="CENTER" onAction="#visualize" prefHeight="10000.0" prefWidth="10000.0" text="Gradujen visualisointi" VBox.vgrow="ALWAYS">
+                              <JFXButton fx:id="VisualizationButton" alignment="CENTER" onAction="#visualize" prefHeight="10000.0" prefWidth="10000.0" text="Gradujen visualisointi" VBox.vgrow="NEVER">
                                  <VBox.margin>
                                     <Insets right="3.0" top="3.0" />
                                  </VBox.margin>
