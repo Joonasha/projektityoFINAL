@@ -1,5 +1,9 @@
 package Visualization;
 
+import SearchClasses.SearchGradesController;
+import static CentralClasses.MainWindow.mainStage;
+import static CentralClasses.MainWindow.newScene;
+import CentralClasses.MainWindowController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,6 +40,17 @@ import HelperClasses.ChartSubject;
 import HelperClasses.Excel;
 import HelperClasses.Thesis;
 import HelperClasses.lists;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class ChartsController {
 	ObservableList<String> lineChartYears = FXCollections.observableArrayList(lists.listYears);
@@ -61,33 +76,29 @@ public class ChartsController {
 	public static boolean filtered=false;
 	
 	@FXML
-	CheckBox lineC = new CheckBox();
+	JFXCheckBox lineC = new JFXCheckBox();
 	@FXML
-	CheckBox pieC = new CheckBox();
+	JFXCheckBox pieC = new JFXCheckBox();
+	JFXCheckBox radarC = new JFXCheckBox();
 	@FXML
-	CheckBox radarC = new CheckBox();
+	JFXCheckBox barC = new JFXCheckBox();
+	JFXButton drawChart = new JFXButton();
 	@FXML
-	CheckBox barC = new CheckBox();
+	JFXButton resetChart = new JFXButton();
 	@FXML
-	Button drawChart = new Button();
+	JFXButton fillBarchart = new JFXButton();
 	@FXML
-	Button resetChart = new Button();
+	JFXButton fillLinechart = new JFXButton();
 	@FXML
-	Button fillBarchart = new Button();
+	JFXButton clearBarchart = new JFXButton();
+	JFXComboBox<String> chartType = new JFXComboBox<String>();
 	@FXML
-	Button fillLinechart = new Button();
+	JFXComboBox<String> pieData = new JFXComboBox<String>();
+	JFXComboBox<String> radarData = new JFXComboBox<String>();
 	@FXML
-	Button clearBarchart = new Button();
+	JFXComboBox<String> lineYear = new JFXComboBox<String>();
 	@FXML
-	ComboBox<String> chartType = new ComboBox<String>();
-	@FXML
-	ComboBox<String> pieData = new ComboBox<String>();
-	@FXML
-	ComboBox<String> radarData = new ComboBox<String>();
-	@FXML
-	ComboBox<String> lineYear = new ComboBox<String>();
-	@FXML
-	ComboBox<String> barOption = new ComboBox<String>();
+	JFXComboBox<String> barOption = new JFXComboBox<String>();
 	@FXML
 	PieChart pieChart;
 	@FXML
@@ -109,6 +120,12 @@ public class ChartsController {
 	
 	@FXML
 	BarChart<String, Number> barChart;
+    @FXML
+    private JFXButton BackToSearch;
+    @FXML
+    private BorderPane borderPane;
+    @FXML
+    private ScrollPane scrollPane;
 	
 	
 	
@@ -132,9 +149,11 @@ public class ChartsController {
 		pieData.setItems(lists.chartSubjects);
 		pieChart.setLegendSide(Side.BOTTOM);
 		pieChart.setLabelsVisible(true);
+                
+                borderPane.setStyle("-fx-background-color:white");
+                scrollPane.setStyle("-fx-background-color:white");
 	}
 	
-	@FXML
 	public static void visualizeTheses() {
 		visualTheses = theses;
 	}
@@ -867,4 +886,12 @@ public class ChartsController {
 			break;
 		}
 	}
+
+    @FXML
+    private void BackToSearchAction(ActionEvent event) throws IOException {
+        mainStage = (Stage) BackToSearch.getScene().getWindow();
+        Parent root = FXMLLoader.load(SearchGradesController.class.getResource("SearchGrades.fxml"));
+        newScene = new Scene(root, 1000, 700);  
+        mainStage.setScene(newScene);        
+    }
 }

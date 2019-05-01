@@ -44,7 +44,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <Label fx:id="title" alignment="CENTER" prefHeight="76.0" prefWidth="328.0" styleClass="title" stylesheets="@../SearchClasses/seachgrades.css" text="Gradujen lisäys" GridPane.halignment="CENTER">
+                              <Label fx:id="title" alignment="CENTER" prefHeight="76.0" prefWidth="328.0" styleClass="title" stylesheets="@../SearchClasses/searchgrades.css" text="Gradujen lisäys" GridPane.halignment="CENTER">
                                  <font>
                                     <Font size="45.0" />
                                  </font>

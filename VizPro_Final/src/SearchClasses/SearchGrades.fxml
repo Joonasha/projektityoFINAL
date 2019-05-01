@@ -16,15 +16,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="700.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SeachGradesController">
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="700.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SearchGradesController">
     <stylesheets>
-        <URL value="@seachgrades.css" />
+        <URL value="@searchgrades.css" />
     </stylesheets>
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@seachgrades.css" HBox.hgrow="ALWAYS" />
-            <VBox fx:id="vboxMain" prefHeight="700.0" prefWidth="1100.0" styleClass="vbox" stylesheets="@seachgrades.css">
+            <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@searchgrades.css" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="vboxMain" prefHeight="700.0" prefWidth="1100.0" styleClass="vbox" stylesheets="@searchgrades.css">
                <children>
                   <VBox alignment="CENTER" prefHeight="223.0" prefWidth="628.0">
                      <children>
@@ -47,7 +47,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <Label fx:id="title" alignment="CENTER" prefHeight="76.0" prefWidth="328.0" styleClass="title" stylesheets="@seachgrades.css" text="Gradujen haku" GridPane.halignment="CENTER">
+                              <Label fx:id="title" alignment="CENTER" prefHeight="76.0" prefWidth="328.0" styleClass="title" stylesheets="@searchgrades.css" text="Gradujen haku" GridPane.halignment="CENTER">
                                  <font>
                                     <Font size="45.0" />
                                  </font>
@@ -70,7 +70,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <JFXButton fx:id="General" onAction="#GeneralAction" prefHeight="50.0" prefWidth="200.0" styleClass="jfx-button" stylesheets="@seachgrades.css" text="Yleiset tiedot">
+                              <JFXButton fx:id="General" onAction="#GeneralAction" prefHeight="50.0" prefWidth="200.0" styleClass="jfx-button" stylesheets="@searchgrades.css" text="Yleiset tiedot">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
@@ -189,7 +189,7 @@
                   <Insets left="30.0" right="30.0" />
                </HBox.margin>
             </VBox>
-            <VBox fx:id="vbox2" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@seachgrades.css" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="vbox2" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@searchgrades.css" HBox.hgrow="ALWAYS" />
          </children>
          <padding>
             <Insets bottom="4.0" top="2.0" />

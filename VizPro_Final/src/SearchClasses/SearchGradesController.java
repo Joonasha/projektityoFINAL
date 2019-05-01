@@ -51,7 +51,7 @@ import javafx.stage.Stage;
  *
  * @author joonasha
  */
-public class SeachGradesController implements Initializable {
+public class SearchGradesController implements Initializable {
 
     //public static Stage mainStage;
     //public static Scene newScene;
