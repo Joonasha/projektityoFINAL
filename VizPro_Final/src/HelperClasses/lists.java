@@ -15,7 +15,7 @@ public class lists {
 	 */
 	public static ObservableList<String> listYears = FXCollections.observableArrayList("2002", "2003", "2004", "2005"
 			, "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2014", "2015", "2016", "2017"
-			, "2018", "2019");
+			, "2018", "2019", "2020", "2021", "2022");
 	
 	/*
 	 * Level of the study
@@ -76,21 +76,22 @@ public class lists {
 			, "Wang & Strong (1996)", "Muu, mikä?");
 
 	/*
-	 * Tasks and concepts
+	 * Tasks
 	 */
-	public static ObservableList<String> listConcepts = FXCollections.observableArrayList("1. tieto", "2. toimijat", "3. toiminta", "4. menetelmät");
+	public static ObservableList<String> listTasks = FXCollections.observableArrayList("1. tieto", "2. toimijat", "3. toiminta", "4. menetelmät");
+	
 	
 	/*
 	 * Research methods employed in the study
 	 */
-	public static ObservableList<String> listMethods = FXCollections.observableArrayList("1. Laadullinen", "2. Määrällinen", "3. Tapaustutkimus", "4. Delfoi", "5. Tiedonlouhinta"
-			, "6. Toimintatutkimus", "7. Arviointitutkimus", "8. Muu, mikä?");
+	public static ObservableList<String> listMethods = FXCollections.observableArrayList("1. Mixed methods", "2. Kartoitus (survey)", "3. Tapaustutkimus", "4. Delfoi", "5. Tiedonlouhinta"
+			, "6. Toimintatutkimus", "7. Arviointitutkimus", "8. Rekisteritutkimus", "9. Kirjallisuuskatsaus", "10. Muu, mikä?");
 	
 	/*
 	 * Data collecting methods employed in the study
 	 * *-marked options must be elaborated on
 	 */
-	public static ObservableList<String> listDatamethods = FXCollections.observableArrayList("1. Asiakirjat*", "2. haastattelu", "3. havainnointi", "4. kirjallisuuskatsaus"
+	public static ObservableList<String> listDatamethods = FXCollections.observableArrayList("1. Asiakirjat", "2. haastattelu", "3. havainnointi", "4. kirjallisuuskatsaus"
 			, "5. kysely", "6. rekisteriaineisto", "7. Muu, mikä?");
 	
 	/*
@@ -99,11 +100,12 @@ public class lists {
 	 */
 	public static ObservableList<String> listSources = FXCollections.observableArrayList("1. Hoitotyöntekijät", "2. Lääkärit", "3. muu henkilöstö*", "4. Erityistyöntekijät"
 			, "5. potilaat/asiakkaat", "6. kansalaiset", "7.  opiskelijat", "8. opettajat", "9. johtajat", "10. tietohallintoammattilaiset", "11. viranomaiset",
-                        "12. kirjallisuus ja tieteelliset tutkimukset", "13. asiakirjat*", "14. rekisterit*", "15. muu, mikä?");
+                        "12. kirjallisuus ja tieteelliset tutkimukset", "13. asiakirjat", "14. rekisterit", "15. muu, mikä?");
         
 	/*
 	 * Context of the research
 	 */
+	
 	public static ObservableList<String> listContext = FXCollections.observableArrayList("1. perusterveydenhuolto", "2. erikoissairaanhoito", "3. sosiaalihuolto"
 			, "4. yksityissektori", "5. kolmas sektori", "6. koulutussektori", "7. yrityssektori", "8. muu, mikä?");
 	

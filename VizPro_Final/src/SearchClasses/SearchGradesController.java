@@ -180,7 +180,7 @@ public class SearchGradesController implements Initializable {
 		//subject4.setText(lists.listSubjects.get(3));
 		sourceLW.setItems(lists.listSources);
 		sourceLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		conceptsLW.setItems(lists.listConcepts);
+		conceptsLW.setItems(lists.listTasks);
 		conceptsLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		methodLW.setItems(lists.listMethods);
 		methodLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

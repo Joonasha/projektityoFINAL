@@ -1,6 +1,7 @@
 package Visualization;
 
 import SearchClasses.SearchGradesController;
+
 import static CentralClasses.MainWindow.mainStage;
 import static CentralClasses.MainWindow.newScene;
 import CentralClasses.MainWindowController;
