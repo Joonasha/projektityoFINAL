@@ -43,7 +43,7 @@
                   <Label layoutX="257.0" layoutY="36.0" text="Vuosi" />
                   <Label layoutX="38.0" layoutY="36.0" text="Vuosi" />
                   <Button fx:id="resetChart" layoutX="368.0" layoutY="69.0" mnemonicParsing="false" onAction="#clearLineChart" prefHeight="25.0" prefWidth="75.0" text="Tyhjennä" />
-                  <CheckBox fx:id="barC" layoutX="517.0" layoutY="15.0" mnemonicParsing="false" onAction="#updateCharts" text="Pylväs" />
+                  <CheckBox fx:id="barC" layoutX="528.0" layoutY="15.0" mnemonicParsing="false" onAction="#updateCharts" text="Pylväs" />
                   <ComboBox fx:id="barOption" layoutX="517.0" layoutY="32.0" onAction="#enableBarChart" prefHeight="25.0" prefWidth="150.0" />
                   <Button fx:id="fillBarchart" layoutX="517.0" layoutY="68.0" mnemonicParsing="false" onAction="#fillBarChart" prefHeight="25.0" prefWidth="75.0" text="Piirrä" />
                   <Button fx:id="clearBarchart" layoutX="592.0" layoutY="68.0" mnemonicParsing="false" onAction="#clearBarChart" prefHeight="25.0" prefWidth="75.0" text="Tyhjennä" />

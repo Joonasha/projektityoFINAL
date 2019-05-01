@@ -4,6 +4,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -17,26 +19,7 @@
     <children>
       <BorderPane prefHeight="278.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <HBox fx:id="LogosHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label prefHeight="40.0" prefWidth="60.0" text="Logo">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label prefHeight="40.0" prefWidth="130.0" text="Toinen logo">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
+            <HBox fx:id="LogosHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <VBox fx:id="ButtonVbox" alignment="CENTER" prefHeight="300.0" prefWidth="200.0" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
@@ -58,17 +41,6 @@
                      </font>
                      <VBox.margin>
                         <Insets bottom="20.0" top="10.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </JFXButton>
-                  <JFXButton fx:id="Manual" buttonType="RAISED" onAction="#ManualAction" prefHeight="150.0" prefWidth="350.0" ripplerFill="#ba1e1e" styleClass="jfx-button" stylesheets="@mainwindow.css" text="Ohjeet (tämä pois?)" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="50.0" top="10.0" />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -111,6 +83,14 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
+                  <ImageView fx:id="logoImage" fitHeight="121.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="60.0" />
+                     </GridPane.margin>
+                     <image>
+                        <Image url="@../../image001.jpg" />
+                     </image>
+                  </ImageView>
                </children>
                <BorderPane.margin>
                   <Insets top="20.0" />
