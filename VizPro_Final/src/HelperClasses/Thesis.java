@@ -27,7 +27,28 @@ public class Thesis {
     String dtgrade; //arvosana, väitöskirja
 
     public Thesis() {
-
+    	
+    }
+    public Thesis(String year, String[] authors, String name, String level, String articles, String language, String authorcount, 
+    		String[] researchSubjects, String[] researchConcepts, String[] researchMethods, String[] sources, String[]informants, 
+    		String informantCount, String[] classes, String[] context) {
+    	this.year=year;
+    	this.authors=authors;
+    	this.name=name;
+    	this.level=level;
+    	this.articles=articles;
+    	this.language=language;
+    	this.authorcount=authorcount;
+    	this.researchSubjects=researchSubjects;
+    	this.researchConcepts=researchConcepts;
+    	this.researchMethods=researchMethods;
+    	this.sources=sources;
+    	this.informants=informants;
+    	this.informantCount=informantCount;
+    	this.classes=classes;
+    	this.context=context;
+    	this.pggrade="0";
+    	this.dtgrade="0";
     }
 
     public Thesis(boolean testi) {

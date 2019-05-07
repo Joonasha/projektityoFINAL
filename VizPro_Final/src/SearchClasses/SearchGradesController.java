@@ -180,7 +180,7 @@ public class SearchGradesController implements Initializable {
 		//subject4.setText(lists.listSubjects.get(3));
 		sourceLW.setItems(lists.listSources);
 		sourceLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		conceptsLW.setItems(lists.listConcepts);
+		conceptsLW.setItems(lists.listTasks);
 		conceptsLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		methodLW.setItems(lists.listMethods);
 		methodLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -329,7 +329,8 @@ public class SearchGradesController implements Initializable {
 	}        
         private void VisualizationScene() throws IOException {
         mainStage = (Stage) VisualizationButton.getScene().getWindow();          
-        ScrollPane root = (ScrollPane) FXMLLoader.load(ChartsController.class.getResource("Charts.fxml"));
+        //ScrollPane root = (ScrollPane) FXMLLoader.load(ChartsController.class.getResource("Charts.fxml"));
+        Parent root = FXMLLoader.load(ChartsController.class.getResource("Charts.fxml"));
         newScene = new Scene(root, 1000, 700);  
         mainStage.setScene(newScene);
         }

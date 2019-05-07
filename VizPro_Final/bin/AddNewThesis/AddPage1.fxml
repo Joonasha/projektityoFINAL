@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddNewThesis.AddPage1Controller">
+   <content>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="375.0" prefWidth="640.0">
+         <children>
+            <Pane layoutX="33.0" layoutY="46.0" prefHeight="401.0" prefWidth="615.0">
+               <children>
+                  <ComboBox fx:id="yearCB" layoutX="164.0" layoutY="19.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vuosi:" />
+                  <TextField fx:id="authorTF" layoutX="164.0" layoutY="65.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Text layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkielman tekijän nimi:" />
+                  <TextField fx:id="studyTF" layoutX="164.0" layoutY="107.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Text layoutX="14.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkielman nimi:" />
+                  <Text layoutX="14.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tekijöiden määrä:" />
+                  <ComboBox fx:id="authorsCB" layoutX="164.0" layoutY="152.0" prefHeight="25.0" prefWidth="240.0" />
+                  <ComboBox fx:id="articlesCB" layoutX="164.0" layoutY="199.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Text layoutX="14.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artikkeleiden määrä:" />
+                  <ComboBox fx:id="languageCB" layoutX="164.0" layoutY="340.0" onAction="#otherLanguage" prefHeight="25.0" prefWidth="240.0" />
+                  <Text layoutX="11.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opinnäytteen kieli:" />
+                  <Text layoutX="11.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opinnäytteen muoto:" />
+                  <Text layoutX="10.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opinnäytteen taso:" />
+                  <ComboBox fx:id="typeCB" layoutX="164.0" layoutY="295.0" onAction="#otherType" prefHeight="25.0" prefWidth="240.0" />
+                  <ComboBox fx:id="levelCB" layoutX="164.0" layoutY="247.0" onAction="#otherLevel" prefHeight="25.0" prefWidth="240.0" />
+                  <TextField fx:id="levelotherTF" layoutX="415.0" layoutY="247.0" />
+                  <TextField fx:id="typeotherTF" layoutX="415.0" layoutY="295.0" />
+                  <TextField fx:id="languageotherTF" layoutX="415.0" layoutY="340.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="185.0" layoutY="447.0" prefHeight="401.0" prefWidth="848.0">
+               <children>
+                  <TextArea fx:id="subject1TA" layoutX="19.0" layoutY="42.0" prefHeight="38.0" prefWidth="189.0" />
+                  <ListView fx:id="subject1LW" layoutX="19.0" layoutY="80.0" prefHeight="130.0" prefWidth="189.0" />
+                  <TextArea fx:id="subject2TA" layoutX="224.0" layoutY="42.0" prefHeight="38.0" prefWidth="189.0" />
+                  <ListView fx:id="subject2LW" layoutX="224.0" layoutY="80.0" prefHeight="130.0" prefWidth="189.0" />
+                  <ListView fx:id="subject3LW" layoutX="427.0" layoutY="80.0" prefHeight="130.0" prefWidth="189.0" />
+                  <TextArea fx:id="subject3TA" layoutX="427.0" layoutY="42.0" prefHeight="38.0" prefWidth="189.0" />
+                  <TextArea fx:id="subject4TA" layoutX="630.0" layoutY="42.0" prefHeight="38.0" prefWidth="189.0" />
+                  <ListView fx:id="subject4LW" layoutX="630.0" layoutY="80.0" prefHeight="130.0" prefWidth="189.0" />
+                  <ListView fx:id="framework1LW" layoutX="19.0" layoutY="234.0" prefHeight="130.0" prefWidth="189.0" />
+                  <ListView fx:id="framework2LW" layoutX="224.0" layoutY="234.0" prefHeight="130.0" prefWidth="189.0" />
+                  <ListView fx:id="framework3LW" layoutX="427.0" layoutY="234.0" prefHeight="130.0" prefWidth="189.0" />
+                  <ListView fx:id="framework4LW" layoutX="630.0" layoutY="234.0" prefHeight="130.0" prefWidth="189.0" />
+                  <CheckBox fx:id="subject1Chk" layoutX="65.0" layoutY="370.0" mnemonicParsing="false" text="Lisää valintaan" />
+                  <CheckBox fx:id="subject2Chk" layoutX="272.0" layoutY="370.0" mnemonicParsing="false" text="Lisää valintaan" />
+                  <CheckBox fx:id="subject3Chk" layoutX="479.0" layoutY="370.0" mnemonicParsing="false" text="Lisää valintaan" />
+                  <CheckBox fx:id="subject4Chk" layoutX="676.0" layoutY="366.0" mnemonicParsing="false" text="Lisää valintaan" />
+                  <Text layoutX="19.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teoreettinen malli/viitekehys:" wrappingWidth="163.5605411529541" />
+                  <Text layoutX="19.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paradigman tutkimuskohteet:" wrappingWidth="163.5605411529541" />
+               </children>
+            </Pane>
+            <Pane layoutX="669.0" layoutY="14.0" prefHeight="441.0" prefWidth="517.0">
+               <children>
+                  <ListView fx:id="methodsLW" layoutX="14.0" layoutY="40.0" prefHeight="176.0" prefWidth="189.0" />
+                  <ListView fx:id="datamethodsLW" layoutX="259.0" layoutY="242.0" prefHeight="176.0" prefWidth="189.0" />
+                  <ListView fx:id="conceptsLW" layoutX="259.0" layoutY="40.0" prefHeight="176.0" prefWidth="189.0" />
+                  <ListView fx:id="sourceLW" layoutX="14.0" layoutY="242.0" prefHeight="176.0" prefWidth="189.0" />
+                  <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutkimusmenetelmä:t" />
+                  <Text layoutX="259.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Käsitteet ja tehtävät:" />
+                  <Text layoutX="259.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiedonkeruumenetelmät:" />
+                  <Text layoutX="14.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tietolähteet:" />
+               </children>
+            </Pane>
+            <Button fx:id="confirm" layoutX="1033.0" layoutY="714.0" mnemonicParsing="false" onAction="#confirmAdd" prefHeight="60.0" prefWidth="98.0" text="Lisää" />
+            <ScrollBar layoutX="1186.0" layoutY="341.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="14.0" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

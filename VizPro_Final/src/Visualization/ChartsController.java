@@ -1,6 +1,7 @@
 package Visualization;
 
 import SearchClasses.SearchGradesController;
+
 import static CentralClasses.MainWindow.mainStage;
 import static CentralClasses.MainWindow.newScene;
 import CentralClasses.MainWindowController;
@@ -125,7 +126,7 @@ public class ChartsController {
     @FXML
     private BorderPane borderPane;
     @FXML
-    private ScrollPane scrollPane;
+    //private ScrollPane scrollPane;
 	
 	
 	
@@ -151,7 +152,7 @@ public class ChartsController {
 		pieChart.setLabelsVisible(true);
                 
                 borderPane.setStyle("-fx-background-color:white");
-                scrollPane.setStyle("-fx-background-color:white");
+                //scrollPane.setStyle("-fx-background-color:white");
 	}
 	
 	public static void visualizeTheses() {

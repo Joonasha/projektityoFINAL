@@ -60,7 +60,8 @@ public class MainWindowController implements Initializable {
         SearchGrades.setFocusTraversable(false);
         Login.setFocusTraversable(false);
         title.setText("Gradujen visualisointi\r\n   \t    työkalu");
-        FileInputStream inputstream; 
+        FileInputStream inputstream;
+        /*
         try {
             inputstream = new FileInputStream("image001.jpg");
 
@@ -69,7 +70,8 @@ public class MainWindowController implements Initializable {
         
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
+        */
     }    
 
     @FXML
