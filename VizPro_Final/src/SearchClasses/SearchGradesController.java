@@ -39,6 +39,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -61,7 +63,7 @@ public class SearchGradesController implements Initializable {
 	@FXML
 	JFXTextField authorsTF = new JFXTextField();
         @FXML
-	ListView<String> thesesLW = new ListView<String>();
+	TableView<String> thesesLW = new TableView<String>();
 	JFXListView<String> conceptsLW = new JFXListView<String>();
 	JFXListView<String> sourceLW = new JFXListView<String>();
 	JFXListView<String> methodLW = new JFXListView<String>();
@@ -143,6 +145,16 @@ public class SearchGradesController implements Initializable {
     private Label title;
     @FXML
     private JFXButton VisualizationButton;
+    näihin arvot:
+    @FXML
+    private TableColumn<?, ?> ratingCol;
+    @FXML
+    private TableColumn<?, ?> nameCol;
+    @FXML
+    private JFXButton rateButton;
+    @FXML
+    private JFXButton DeleteButton;
+
     /**
      * Initializes the controller class.
      */
@@ -153,7 +165,11 @@ public class SearchGradesController implements Initializable {
         anchorpane.setStyle("-fx-background-color:#94E2F7");
         vboxMain.setStyle("-fx-background-color:white");
         
-        
+        /*
+                                   <columnResizePolicy>
+                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy> 
+        */
 		listTheses();
 		thesesLW.setItems(nameTheses);
 		yearCB.setItems(lists.listYears); 
@@ -540,6 +556,14 @@ public class SearchGradesController implements Initializable {
         Parent root = FXMLLoader.load(MainWindowController.class.getResource("MainWindow.fxml"));
         newScene = new Scene(root, 1000, 700);  
         mainStage.setScene(newScene);        
+    }
+
+    @FXML
+    private void rateGrade(ActionEvent event) {
+    }
+
+    @FXML
+    private void delete(ActionEvent event) {
     }
 
 

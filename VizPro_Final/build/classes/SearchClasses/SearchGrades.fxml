@@ -7,7 +7,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -154,12 +155,33 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="258.0" prefWidth="628.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ListView fx:id="thesesLW" prefHeight="218.0" prefWidth="850.0" HBox.hgrow="ALWAYS">
+                        <VBox prefHeight="218.0" prefWidth="190.0">
+                           <children>
+                              <JFXButton fx:id="rateButton" alignment="CENTER" onAction="#rateGrade" prefHeight="10000.0" prefWidth="10000.0" text="Arvostele" VBox.vgrow="NEVER">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" right="3.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="DeleteButton" alignment="CENTER" onAction="#delete" prefHeight="10000.0" prefWidth="10000.0" text="Poista" VBox.vgrow="NEVER">
+                                 <VBox.margin>
+                                    <Insets right="3.0" top="3.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                        </VBox>
+                        <TableView fx:id="thesesLW" prefHeight="218.0" prefWidth="850.0" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets left="3.0" />
                            </padding>
-                        </ListView>
-                        <VBox prefHeight="218.0" prefWidth="190.0" HBox.hgrow="NEVER">
+                           <columns>
+                               <TableColumn fx:id="ratingCol" prefWidth="120" text="Arvosana" />
+                               <TableColumn fx:id="nameCol" maxWidth="80000.0" minWidth="680.0" prefWidth="680.0" resizable="false" text="Nimi" />
+                           </columns>
+                        </TableView>
+                        <VBox prefHeight="218.0" prefWidth="220.0" HBox.hgrow="NEVER">
                            <children>
                               <JFXButton alignment="CENTER" onAction="#updateList" prefHeight="10000.0" prefWidth="10000.0" text="Hae" VBox.vgrow="NEVER">
                                  <VBox.margin>
@@ -186,7 +208,7 @@
                   </HBox>
                </children>
                <HBox.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets left="20.0" right="20.0" />
                </HBox.margin>
             </VBox>
             <VBox fx:id="vbox2" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@searchgrades.css" HBox.hgrow="ALWAYS" />
