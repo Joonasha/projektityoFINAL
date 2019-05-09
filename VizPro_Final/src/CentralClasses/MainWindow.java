@@ -36,7 +36,7 @@ public class MainWindow extends Application {
         Scene scene = new Scene(root);
         mainStage = primaryStage;
         mainStage.setHeight(900);
-        mainStage.setWidth(1100);
+        mainStage.setWidth(1300);
 
         //VBox base0 = (VBox) FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         //frontpage = new Scene(base0, 640, 400);

@@ -25,7 +25,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@searchgrades.css" HBox.hgrow="ALWAYS" />
-            <VBox fx:id="vboxMain" prefHeight="700.0" prefWidth="1100.0" styleClass="vbox" stylesheets="@searchgrades.css">
+            <VBox fx:id="vboxMain" prefHeight="700.0" prefWidth="2300.0" styleClass="vbox" stylesheets="@searchgrades.css">
                <children>
                   <VBox alignment="CENTER" prefHeight="223.0" prefWidth="628.0">
                      <children>
@@ -177,7 +177,7 @@
                               <Insets left="3.0" />
                            </padding>
                            <columns>
-                               <TableColumn fx:id="ratingCol" prefWidth="120" text="Arvosana" />
+                               <TableColumn fx:id="ratingCol" prefWidth="160.0" text="Arvosana" />
                                <TableColumn fx:id="nameCol" maxWidth="80000.0" minWidth="680.0" prefWidth="680.0" resizable="false" text="Nimi" />
                            </columns>
                         </TableView>

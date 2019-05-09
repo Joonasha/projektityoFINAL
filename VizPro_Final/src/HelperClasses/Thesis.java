@@ -205,7 +205,9 @@ public class Thesis {
     public String getName() {
         return name;
     }
-
+    public String getGrades() {
+        return name;
+    }
     public String getLevel() {
         return level;
     }

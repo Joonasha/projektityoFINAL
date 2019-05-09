@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -43,6 +44,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -63,7 +65,8 @@ public class SearchGradesController implements Initializable {
 	@FXML
 	JFXTextField authorsTF = new JFXTextField();
         @FXML
-	TableView<String> thesesLW = new TableView<String>();
+	TableView<Grade> thesesLW;;
+        //TableView<String> thesesLW = new TableView<String>();
 	JFXListView<String> conceptsLW = new JFXListView<String>();
 	JFXListView<String> sourceLW = new JFXListView<String>();
 	JFXListView<String> methodLW = new JFXListView<String>();
@@ -134,7 +137,8 @@ public class SearchGradesController implements Initializable {
     @FXML
     private Label amountLabel;
     	int i;
-	ObservableList<String> nameTheses = FXCollections.observableArrayList();
+        //ObservableList<String> nameTheses = FXCollections.observableArrayList();
+	ObservableList<Grade> nameTheses = FXCollections.observableArrayList();
 	String excelSource = "Testiaineisto.xlsx";
 	ArrayList<Thesis> theses = Excel.readData(excelSource);
 	ArrayList<String> names = new ArrayList<String>();
@@ -145,16 +149,18 @@ public class SearchGradesController implements Initializable {
     private Label title;
     @FXML
     private JFXButton VisualizationButton;
-    näihin arvot:
+    //tästä nimi lista:
+    //ObservableList<Grade> testNameTheses = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<?, ?> ratingCol;
+    private TableColumn<Grade, String> ratingCol;
     @FXML
-    private TableColumn<?, ?> nameCol;
+    private TableColumn<Grade, String> nameCol;
     @FXML
     private JFXButton rateButton;
     @FXML
     private JFXButton DeleteButton;
 
+    private String getGrade;
     /**
      * Initializes the controller class.
      */
@@ -164,14 +170,18 @@ public class SearchGradesController implements Initializable {
         vbox2.setStyle("-fx-background-color:#94E2F7");
         anchorpane.setStyle("-fx-background-color:#94E2F7");
         vboxMain.setStyle("-fx-background-color:white");
-        
+        nameCol.prefWidthProperty().bind(thesesLW.widthProperty().subtract(300));
+        ratingCol.setPrefWidth(185);
+        //ratingCol.prefWidthProperty().bind(thesesLW.widthProperty().subtract(660));
         /*
                                    <columnResizePolicy>
                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy> 
         */
 		listTheses();
-		thesesLW.setItems(nameTheses);
+                //nameTheses.add(new Grade(rating, name));
+		//thesesLW.setItems(nameTheses);
+                thesesLW.getItems().setAll(nameTheses);
 		yearCB.setItems(lists.listYears); 
 		levelCB.setItems(lists.listLevels);
 		typeCB.setItems(lists.listTypes);
@@ -201,20 +211,29 @@ public class SearchGradesController implements Initializable {
 		methodLW.setItems(lists.listMethods);
 		methodLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		datamethodLW.setItems(lists.listDatamethods);
-		datamethodLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);        
-        
+		datamethodLW.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);    
+                
+        initCol();
     }    
+    
+        private void initCol() {
+            ratingCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
+            nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        }
     
 	public void listTheses() {
 		for(Thesis e : theses) {
-			nameTheses.add(e.getName());
+			//nameTheses.add(e.getName());
+                        nameTheses.add(new Grade(e.getPggrade(), e.getName()));
+                        //e.getGradesRating(e.getName())
 		}
 	}
 	
         @FXML
 	public void updateList() {
 		thesesLW.getItems().clear();
-		names.clear();
+		//names.clear();
+                nameTheses.clear();
 		for(Thesis e : theses) {
 			if(checkYear(e)) {
 				if(checkType(e)) {
@@ -223,7 +242,13 @@ public class SearchGradesController implements Initializable {
 							if(checkNumberofauthors(e)) {
 								if(checkResearchsubjects(e)) {
 									if(checkResearchConcepts(e)) {
-										names.add(e.getName());
+                                                                            if(e.getDtgrade()!=null){
+										getGrade = e.getDtgrade();
+                                                                            }
+                                                                            else{
+                                                                                getGrade = e.getPggrade();
+                                                                            }
+                                                                                nameTheses.add(new Grade(getGrade, e.getName()));
 									}
 								}
 							}
@@ -233,7 +258,9 @@ public class SearchGradesController implements Initializable {
 			}
 		}
 		
-		thesesLW.setItems(FXCollections.observableArrayList(names));	
+		//thesesLW.setItems(FXCollections.observableArrayList(names));	
+                //thesesLW.setItems(nameTheses);
+                thesesLW.getItems().setAll(nameTheses);
 	}
 	
 	public boolean checkYear(Thesis e) {
@@ -566,5 +593,22 @@ public class SearchGradesController implements Initializable {
     private void delete(ActionEvent event) {
     }
 
+        public static class Grade {
+            private final SimpleStringProperty rating;
+            private final SimpleStringProperty name;
+            
+            Grade(String rating, String name){
+                this.rating = new SimpleStringProperty(rating);
+                this.name = new SimpleStringProperty(name);
+            }
+            
+            public String getRating(){
+                return rating.get();
+            }
+            
+            public String getName(){
+                return name.get();
+            }            
+        }
 
 }
