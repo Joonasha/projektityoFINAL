@@ -90,7 +90,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <HBox fx:id="contentMain" prefHeight="341.0" prefWidth="628.0">
+                  <HBox fx:id="contentMain" alignment="TOP_CENTER" prefHeight="341.0" prefWidth="628.0">
                      <children>
                         <VBox fx:id="content1" maxWidth="310.0" prefHeight="324.0" prefWidth="310.0">
                            <children>

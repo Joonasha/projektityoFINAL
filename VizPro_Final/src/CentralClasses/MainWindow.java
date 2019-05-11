@@ -31,7 +31,8 @@ public class MainWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+        //root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+        root = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
         
         Scene scene = new Scene(root);
         mainStage = primaryStage;

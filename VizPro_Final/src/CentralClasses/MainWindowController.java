@@ -56,6 +56,7 @@ public class MainWindowController implements Initializable {
     private ImageView logoImage;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Login.setVisible(false);
         CreateGrade.setFocusTraversable(false);
         SearchGrades.setFocusTraversable(false);
         Login.setFocusTraversable(false);

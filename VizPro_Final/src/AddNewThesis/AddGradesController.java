@@ -8,6 +8,7 @@ package AddNewThesis;
 import static CentralClasses.MainWindow.mainStage;
 import static CentralClasses.MainWindow.newScene;
 import CentralClasses.MainWindowController;
+import CentralClasses.StartPageController;
 import HelperClasses.Excel;
 import HelperClasses.Thesis;
 import HelperClasses.lists;
@@ -109,7 +110,8 @@ public class AddGradesController implements Initializable {
 	private JFXCheckBox subject4Chk;
 	
 	Thesis thesis;
-	String excelURL = "Testiaineisto.xlsx";
+	//String excelURL = "Testiaineisto.xlsx";
+        String excelURL = StartPageController.excelSource;   
 	int i;
 	/*
 	 * Variables for the creation of a new thesis-object

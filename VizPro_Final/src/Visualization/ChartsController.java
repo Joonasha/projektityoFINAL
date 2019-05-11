@@ -5,6 +5,7 @@ import SearchClasses.SearchGradesController;
 import static CentralClasses.MainWindow.mainStage;
 import static CentralClasses.MainWindow.newScene;
 import CentralClasses.MainWindowController;
+import CentralClasses.StartPageController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -134,7 +135,7 @@ public class ChartsController {
 		
 		lineyAxis.setTickUnit(1);
 		lineChartYears.add("Kaikki");
-		String excelSource = "Testiaineisto.xlsx";
+		String excelSource = StartPageController.excelSource;   
 		theses = Excel.readData(excelSource);
 		visualTheses = lists.visualTheses;
 		

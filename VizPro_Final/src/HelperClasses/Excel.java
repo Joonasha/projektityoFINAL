@@ -233,7 +233,8 @@ public class Excel {
      */
     public static boolean removeThesis(Thesis thesis, String address) {
         try {
-            FileInputStream fis = new FileInputStream(new File(address));
+
+           FileInputStream fis = new FileInputStream(new File(address));
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheetAt(0);
             sheet.removeRow(sheet.getRow(thesis.getRowNum()));
