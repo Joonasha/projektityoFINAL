@@ -23,8 +23,8 @@ public class Thesis {
     String informantCount; //Tietolähteiden lukumäärä
     String[] classes; //Luokat 1.1, 1.2 ...
     String[] context; //Tutkimuksen konteksti
-    String pggrade; //arvosana, pro gradu
-    String dtgrade; //arvosana, väitöskirja
+    public  String  pggrade; //arvosana, pro gradu
+    public  String dtgrade; //arvosana, väitöskirja
 
     public Thesis() {
     	
@@ -80,6 +80,10 @@ public class Thesis {
         dtgrade = "18";
     }
 
+public void changePgRating(String name){
+        setPggrade(name);
+    }
+    
     public void setRowNum(int rowNum) {
         this.rowNum = rowNum;
     }
@@ -160,12 +164,12 @@ public class Thesis {
         this.context = context;
     }
 
-    public void setPggrade(String pggrade) {
-        this.pggrade = pggrade;
+    public void setPggrade(String ppggrade) {
+        pggrade = ppggrade;
     }
 
-    public void setDtgrade(String dtgrade) {
-        this.dtgrade = dtgrade;
+    public void setDtgrade(String ddtgrade) {
+        dtgrade = ddtgrade;
     }
 
     @Override
@@ -323,7 +327,7 @@ public class Thesis {
         return tmp;
     }
 
-    public String getPggrade() {
+    public  String getPggrade() {
         return pggrade;
     }
 

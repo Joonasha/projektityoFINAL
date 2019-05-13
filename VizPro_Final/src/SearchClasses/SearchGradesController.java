@@ -23,6 +23,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -37,8 +38,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -610,23 +614,52 @@ public class SearchGradesController implements Initializable {
 
     @FXML
     private void rateGrade(ActionEvent event) {
+        ButtonType pro = new ButtonType("pro gradu", ButtonBar.ButtonData.OK_DONE);
+        ButtonType book = new ButtonType("väitöskirja", ButtonBar.ButtonData.CANCEL_CLOSE);        
+        Alert alert = new Alert(AlertType.CONFIRMATION,"Kumpi arvostellaan?",pro,book);
+        String method = null;
+
+        if(thesesLW.getSelectionModel().getSelectedItem()!=null){
         String name = thesesLW.getSelectionModel().getSelectedItem().getName();
-        TextInputDialog dialog = new TextInputDialog("");
-        dialog.setContentText("Valittuna: '" + name + "'   Arvosana:");
-        dialog.showAndWait();
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
-            //arvosanan muutos
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == pro){
+            method = "pro";                 
+        }     
+        if (result.get() == book){
+            method = "book";                 
+        }     
+        alert.close();
+        TextInputDialog Tdialog = new TextInputDialog("");
+        Tdialog.setContentText("Valittuna: '" + name + "'   Arvosana:");
+        Tdialog.showAndWait();
+        Optional<String> Tresult = Tdialog.showAndWait();
+        if (Tresult.isPresent()){
+            for (Thesis e : theses) {
+                if (e.getName() == name) {
+                    if(method=="pro"){
+                        Excel.addRating(e, excelSource, Tresult.get(), method);
+                    }
+                    if(method=="book"){
+                        Excel.addRating(e, excelSource, Tresult.get(), method);;
+                    }                    
+                }
+            }
+        }           
+        Tdialog.close();
         }
+        updateList();
+
     }
 
     @FXML
     private void delete(ActionEvent event) {
+        if(thesesLW.getSelectionModel().getSelectedItem() != null){
         String name = thesesLW.getSelectionModel().getSelectedItem().getName();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Poistetaanko ' " + name + " '?");
         alert.showAndWait();
-        if (alert.getResult() == ButtonType.OK) {
+        if (alert.getResult() == ButtonType.OK && name!=null) {
+            
             thesesLW.getItems().removeAll(thesesLW.getSelectionModel().getSelectedItem());
             Thesis thesis = null;
             for (Thesis e : theses) {
@@ -637,7 +670,8 @@ public class SearchGradesController implements Initializable {
             //osoit valittavaksi!
             Excel.removeThesis(thesis, excelSource);
         }
-
+        alert.close();
+        }
     }
 
     public static class Grade {

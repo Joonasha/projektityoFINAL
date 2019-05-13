@@ -246,4 +246,24 @@ public class Excel {
         }
         return false;
     }
+    public static boolean addRating(Thesis thesis, String address, String rating, String method) {
+        try {
+
+           FileInputStream fis = new FileInputStream(new File(address));
+            XSSFWorkbook workbook = new XSSFWorkbook(fis);
+            XSSFSheet sheet = workbook.getSheetAt(0);
+            if(method =="pro"){
+                sheet.getRow(thesis.getRowNum()).createCell(16).setCellValue(rating);
+            }
+            if(method == "book"){
+                sheet.getRow(thesis.getRowNum()).createCell(17).setCellValue(rating);
+            }
+            workbook.close();
+            fis.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }    
 }
