@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="Apache POI/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="Apache POI/commons-collections4-4.2.jar"/>
+	<classpathentry kind="lib" path="Apache POI/commons-compress-1.18.jar"/>
+	<classpathentry kind="lib" path="Apache POI/poi-4.0.1.jar"/>
+	<classpathentry kind="lib" path="Apache POI/poi-ooxml-4.0.1.jar"/>
+	<classpathentry kind="lib" path="Apache POI/poi-ooxml-schemas-4.0.1.jar"/>
+	<classpathentry kind="lib" path="Apache POI/xmlbeans-3.0.2.jar"/>
+	<classpathentry kind="lib" path="dist/lib/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="dist/lib/commons-collections4-4.2.jar"/>
+	<classpathentry kind="lib" path="dist/lib/commons-compress-1.18.jar"/>
+	<classpathentry kind="lib" path="dist/lib/poi-4.0.1.jar"/>
+	<classpathentry kind="lib" path="dist/lib/poi-ooxml-4.0.1.jar"/>
+	<classpathentry kind="lib" path="dist/lib/poi-ooxml-schemas-4.0.1.jar"/>
+	<classpathentry kind="lib" path="dist/lib/xmlbeans-3.0.2.jar"/>
+	<classpathentry kind="lib" path="dist/VizPro_0.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar"/>
+	<classpathentry kind="lib" path="lib/junit_4/junit-4.12-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/junit_4/junit-4.12-sources.jar"/>
+	<classpathentry kind="lib" path="lib/junit_4/junit-4.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jfoenix-8.0.8.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
