@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="mainFxmlClass" stylesheets="@AddPreview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddNewThesis.AddPreviewController">
+   <children>
+      <HBox fx:id="base" alignment="CENTER" layoutX="21.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="680.0" prefWidth="850.0" spacing="10.0" styleClass="hbox" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="returnBtn" onAction="#goBack" text="Takaisin">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="700.0" prefWidth="300.0" styleClass="vbox">
+               <children>
+                  <JFXTextArea fx:id="previewYear" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewAuthors" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewName" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewLevel" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewType" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewArticles" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewLanguage" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="700.0" prefWidth="300.0" styleClass="vbox">
+               <children>
+                  <JFXTextArea fx:id="previewSubjects" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewConcepts" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewMethods" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewSources" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewInformants" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewClasses" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+                  <JFXTextArea fx:id="previewContext" editable="false" prefHeight="80.0" prefWidth="300.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></JFXTextArea>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="700.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="confirmBtn" onAction="#confirmAdd" text="Vahvista lisäys">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

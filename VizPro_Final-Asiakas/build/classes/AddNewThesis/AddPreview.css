@@ -1,0 +1,41 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: #94E2F7;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+.hbox {
+	-fx-background-color: white;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+.vbox {
+	-fx-background-color: white;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+.jfx-button {
+    -fx-background-color: #00A8C1;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;    
+}
+.jfx-button:focused {
+    -fx-background-color: #1A84A0;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+.jfx-button:hover {
+    -fx-background-color: #1A84A0;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="700.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchClasses.SearchGradesController">
+    <stylesheets>
+        <URL value="@searchgrades.css" />
+    </stylesheets>
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@searchgrades.css" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="vboxMain" prefHeight="700.0" prefWidth="2300.0" styleClass="vbox" stylesheets="@searchgrades.css">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="223.0" prefWidth="628.0">
+                     <children>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXButton fx:id="BackToMain" ellipsisString="" onAction="#BackToMainAction" prefHeight="50.0" prefWidth="120.0" styleClass="jfx-button2" stylesheets="@../CentralClasses/mainwindow.css" text="Takaisin" GridPane.halignment="LEFT">
+                                 <GridPane.margin>
+                                    <Insets right="20.0" top="10.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <Label fx:id="title" alignment="CENTER" prefHeight="76.0" prefWidth="328.0" styleClass="title" stylesheets="@searchgrades.css" text="Gradujen haku" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="45.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </GridPane>
+                        <Label alignment="CENTER" prefHeight="19.0" prefWidth="265.0" text="Listassa on oletuksena kaikki gradut valittuina.">
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <JFXButton fx:id="General" onAction="#GeneralAction" prefHeight="50.0" prefWidth="200.0" styleClass="jfx-button" stylesheets="@searchgrades.css" text="Yleiset tiedot">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="ParadigmaButton" onAction="#ParadigmaButtonAction" prefHeight="50.0" prefWidth="200.0" text="Paradigman tutkimuskohteet">
+                                 <HBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="Others" onAction="#OthersAction" prefHeight="50.0" prefWidth="200.0" text="Muut">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox fx:id="contentMain" alignment="TOP_CENTER" prefHeight="341.0" prefWidth="628.0">
+                     <children>
+                        <VBox fx:id="content1" maxWidth="310.0" prefHeight="324.0" prefWidth="310.0">
+                           <children>
+                              <Label fx:id="nameLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen nimi" />
+                              <JFXTextField fx:id="nameTF" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="338.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <Label fx:id="creatorsLabel" prefHeight="26.0" prefWidth="118.0" text="Tekijät">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="authorsTF" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="221.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <Label fx:id="yearLabel" prefHeight="26.0" prefWidth="118.0" text="Vuosi">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXComboBox fx:id="yearCB" prefHeight="25.0" prefWidth="274.0" />
+                              <Label fx:id="shapeLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen muoto">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXComboBox fx:id="typeCB" prefHeight="25.0" prefWidth="274.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="70.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="content2" prefHeight="262.0" prefWidth="367.0">
+                           <children>
+                              <Label fx:id="levelLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen taso" />
+                              <JFXComboBox fx:id="levelCB" prefHeight="25.0" prefWidth="217.0" />
+                              <Label fx:id="lanquageLabel" prefHeight="26.0" prefWidth="118.0" text="Opinnäytteen kieli">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXComboBox fx:id="languageCB" prefHeight="25.0" prefWidth="219.0" />
+                              <Label fx:id="amountLabel" prefHeight="26.0" prefWidth="118.0" text="Tekijöiden lukumäärä">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXComboBox fx:id="authorsCB" prefHeight="25.0" prefWidth="222.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="90.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="258.0" prefWidth="628.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="218.0" prefWidth="190.0">
+                           <children>
+                              <JFXButton fx:id="rateButton" alignment="CENTER" onAction="#rateGrade" prefHeight="10000.0" prefWidth="10000.0" text="Arvostele" VBox.vgrow="NEVER">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" right="3.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="DeleteButton" alignment="CENTER" onAction="#delete" prefHeight="10000.0" prefWidth="10000.0" text="Poista" VBox.vgrow="NEVER">
+                                 <VBox.margin>
+                                    <Insets right="3.0" top="3.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                        </VBox>
+                        <TableView fx:id="thesesTW" prefHeight="218.0" prefWidth="850.0" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets left="3.0" />
+                           </padding>
+                           <columns>
+                               <TableColumn fx:id="ratingCol" prefWidth="160.0" text="Arvosana" />
+                               <TableColumn fx:id="nameCol" maxWidth="80000.0" minWidth="680.0" prefWidth="680.0" resizable="false" text="Nimi" />
+                           </columns>
+                        </TableView>
+                        <VBox prefHeight="218.0" prefWidth="220.0" HBox.hgrow="NEVER">
+                           <children>
+                              <JFXButton alignment="CENTER" onAction="#updateList" prefHeight="10000.0" prefWidth="10000.0" text="Hae" VBox.vgrow="NEVER">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" right="3.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="VisualizationButton" alignment="CENTER" onAction="#visualize" prefHeight="10000.0" prefWidth="10000.0" text="Gradujen visualisointi" VBox.vgrow="NEVER">
+                                 <VBox.margin>
+                                    <Insets right="3.0" top="3.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="3.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="4.0" left="3.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox fx:id="vbox2" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" styleClass="pane" stylesheets="@searchgrades.css" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="4.0" top="2.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
