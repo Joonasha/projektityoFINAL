@@ -301,6 +301,7 @@ public class ChartsController {
 					}
 				}
 				baryAxis.setUpperBound(highest + 1);
+				lineyAxis2.setUpperBound(highest + 5);
 				barChartData1 = new XYChart.Data<String, Number>(y, thesesBySelection[0]);
 				barchartSeries1.getData().add(barChartData1);
 				barChartData2 = new XYChart.Data<String, Number>(y, thesesBySelection[1]);
@@ -392,6 +393,7 @@ public class ChartsController {
 						highest = t;
 					}
 				}
+				lineyAxis.setUpperBound(highest+5);
 				lineyAxis2.setUpperBound(highest + 5);
 				for (Thesis t : visualTheses) {
 					year = t.getYear();
@@ -438,6 +440,7 @@ public class ChartsController {
 						highest = t;
 					}
 				}			
+				lineyAxis.setUpperBound(highest+5);
 				lineyAxis2.setUpperBound(highest + 5);
 				for (i = 0; i < allTheses.length; i++) {
 					lineChartPGradesstring = new XYChart.Data<String, Number>(lists.listGrades.get(i), allTheses[i]);
@@ -568,6 +571,7 @@ public class ChartsController {
 					}
 				}			
 				lineyAxis.setUpperBound(highest + 5);
+				lineyAxis2.setUpperBound(highest + 5);
 				for (i = 0; i < allTheses.length; i++) {
 					lineChartPGrades = new XYChart.Data<Number, Number>(i + 1, allTheses[i]);
 					linechartSeries.getData().add(lineChartPGrades);

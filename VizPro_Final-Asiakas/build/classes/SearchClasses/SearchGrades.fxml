@@ -172,7 +172,7 @@
                               <Insets right="3.0" />
                            </padding>
                         </VBox>
-                        <TableView fx:id="thesesLW" prefHeight="218.0" prefWidth="850.0" HBox.hgrow="ALWAYS">
+                        <TableView fx:id="thesesTW" prefHeight="218.0" prefWidth="850.0" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets left="3.0" />
                            </padding>

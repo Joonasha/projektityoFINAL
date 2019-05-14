@@ -70,7 +70,7 @@ public class SearchGradesController implements Initializable {
     @FXML
     JFXTextField authorsTF = new JFXTextField();
     @FXML
-    TableView<Grade> thesesLW;
+    TableView<Grade> thesesTW;
     //TableView<String> thesesLW = new TableView<String>();
     JFXListView<String> conceptsLW = new JFXListView<String>();
     JFXListView<String> sourceLW = new JFXListView<String>();
@@ -143,7 +143,7 @@ public class SearchGradesController implements Initializable {
     private Label amountLabel;
     int i;
     
-    //ObservableList<String> nameTheses = FXCollections.observableArrayList();
+    ObservableList<String> nameTheses = FXCollections.observableArrayList();
     ObservableList<Grade> nameTheses2 = FXCollections.observableArrayList();
     //String excelSource = "Testiaineisto.xlsx";
     String excelSource = StartPageController.excelSource;    
@@ -178,7 +178,7 @@ public class SearchGradesController implements Initializable {
         vbox2.setStyle("-fx-background-color:#94E2F7");
         anchorpane.setStyle("-fx-background-color:#94E2F7");
         vboxMain.setStyle("-fx-background-color:white");
-        nameCol.prefWidthProperty().bind(thesesLW.widthProperty().subtract(300));
+        nameCol.prefWidthProperty().bind(thesesTW.widthProperty().subtract(300));
         ratingCol.setPrefWidth(185);
         //ratingCol.prefWidthProperty().bind(thesesLW.widthProperty().subtract(660));
         /*
@@ -189,7 +189,7 @@ public class SearchGradesController implements Initializable {
         listTheses();
         //nameTheses.add(new Grade(rating, name));
         //thesesLW.setItems(nameTheses);
-        thesesLW.getItems().setAll(nameTheses2);
+        thesesTW.getItems().setAll(nameTheses2);
         yearCB.setItems(lists.listYears);
         levelCB.setItems(lists.listLevels);
         typeCB.setItems(lists.listTypes);
@@ -231,7 +231,7 @@ public class SearchGradesController implements Initializable {
 
     public void listTheses() {
         for (Thesis e : theses) {
-            //nameTheses.add(e.getName());
+            nameTheses.add(e.getName());
             nameTheses2.add(new Grade(e.getPggrade(), e.getName()));
             //e.getGradesRating(e.getName())
         }
@@ -239,9 +239,10 @@ public class SearchGradesController implements Initializable {
 
     @FXML
     public void updateList() {
-        thesesLW.getItems().clear();
+        thesesTW.getItems().clear();
         //names.clear();
         nameTheses2.clear();
+        nameTheses.clear();
         for (Thesis e : theses) {
             if (checkYear(e)) {
                 if (checkType(e)) {
@@ -256,6 +257,7 @@ public class SearchGradesController implements Initializable {
                                             getGrade = e.getPggrade();
                                         }
                                         nameTheses2.add(new Grade(getGrade, e.getName()));
+                                        nameTheses.add(e.getName());
                                     }
                                 }
                             }
@@ -267,7 +269,7 @@ public class SearchGradesController implements Initializable {
 
         //thesesLW.setItems(FXCollections.observableArrayList(names));	
         //thesesLW.setItems(nameTheses);
-        thesesLW.getItems().setAll(nameTheses2);
+        thesesTW.getItems().setAll(nameTheses2);
     }
 
     public boolean checkYear(Thesis e) {
@@ -375,7 +377,7 @@ public class SearchGradesController implements Initializable {
     public void visualize() throws IOException {
         lists.visualTheses.clear();
         for (Thesis t : theses) {
-            if (thesesLW.getItems().contains(t.getName())) {
+            if (nameTheses.contains((t.getName()))) {
                 lists.visualTheses.add(t);
             }
         }
@@ -610,7 +612,7 @@ public class SearchGradesController implements Initializable {
 
     @FXML
     private void rateGrade(ActionEvent event) {
-        String name = thesesLW.getSelectionModel().getSelectedItem().getName();
+        String name = thesesTW.getSelectionModel().getSelectedItem().getName();
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setContentText("Valittuna: '" + name + "'   Arvosana:");
         dialog.showAndWait();
@@ -622,12 +624,12 @@ public class SearchGradesController implements Initializable {
 
     @FXML
     private void delete(ActionEvent event) {
-        String name = thesesLW.getSelectionModel().getSelectedItem().getName();
+        String name = thesesTW.getSelectionModel().getSelectedItem().getName();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Poistetaanko ' " + name + " '?");
         alert.showAndWait();
         if (alert.getResult() == ButtonType.OK) {
-            thesesLW.getItems().removeAll(thesesLW.getSelectionModel().getSelectedItem());
+            thesesTW.getItems().removeAll(thesesTW.getSelectionModel().getSelectedItem());
             Thesis thesis = null;
             for (Thesis e : theses) {
                 if (e.getName() == name) {

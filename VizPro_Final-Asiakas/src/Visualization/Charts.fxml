@@ -142,10 +142,10 @@
                         <PieChart fx:id="pieChart" labelLineLength="5.0" layoutX="137.0" layoutY="208.0" prefHeight="283.0" prefWidth="344.0" visible="false" />
                         <LineChart fx:id="lineChart" layoutX="807.0" layoutY="212.0" prefHeight="275.0" prefWidth="308.0" visible="false">
                            <xAxis>
-                              <NumberAxis fx:id="linexAxis1" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" side="BOTTOM" tickUnit="1.0" upperBound="8.0" />
+                              <NumberAxis fx:id="linexAxis" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" side="BOTTOM" tickUnit="1.0" upperBound="8.0" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis fx:id="lineyAxis1" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" scaleShape="false" side="LEFT" tickUnit="1.0" upperBound="10.0" />
+                              <NumberAxis fx:id="lineyAxis" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" scaleShape="false" side="LEFT" tickUnit="1.0" upperBound="10.0" />
                            </yAxis>
                         </LineChart>
                         <BarChart fx:id="barChart" barGap="1.0" layoutX="807.0" layoutY="538.0" prefHeight="303.0" prefWidth="319.0" visible="false">
@@ -153,15 +153,15 @@
                               <CategoryAxis fx:id="barxAxis1" autoRanging="true" side="BOTTOM" tickLabelRotation="-38.0" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis fx:id="baryAxis1" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" side="LEFT" tickUnit="1.0" />
+                              <NumberAxis fx:id="baryAxis" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" side="LEFT" tickUnit="1.0" upperBound="30.0" />
                            </yAxis>
                         </BarChart>
                         <LineChart fx:id="lineChart2" layoutX="800.0" layoutY="604.0" prefHeight="303.0" prefWidth="323.0" visible="false">
                            <xAxis>
-                              <CategoryAxis fx:id="linexAxis21" side="BOTTOM" />
+                              <CategoryAxis fx:id="linexAxis2" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis fx:id="lineyAxis21" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" scaleShape="false" side="LEFT" tickUnit="1.0" upperBound="10.0" />
+                              <NumberAxis fx:id="lineyAxis2" autoRanging="false" minorTickCount="0" minorTickLength="1.0" minorTickVisible="false" scaleShape="false" side="LEFT" tickUnit="1.0" upperBound="10.0" />
                            </yAxis>
                         </LineChart>
                      </children>
