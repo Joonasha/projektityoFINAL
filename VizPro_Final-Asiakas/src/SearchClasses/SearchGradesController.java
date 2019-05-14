@@ -64,7 +64,7 @@ public class SearchGradesController implements Initializable {
 
     //public static Stage mainStage;
     //public static Scene newScene;
-    //public static Parent root;    
+    //public static Parent root;
     @FXML
     JFXTextField nameTF = new JFXTextField();
     @FXML
@@ -245,26 +245,30 @@ public class SearchGradesController implements Initializable {
         nameTheses.clear();
         for (Thesis e : theses) {
             if (checkYear(e)) {
-                if (checkType(e)) {
-                    if (checkLevel(e)) {
-                        if (checkLanguage(e)) {
-                            if (checkNumberofauthors(e)) {
-                                if (checkResearchsubjects(e)) {
-                                    if (checkResearchConcepts(e)) {
-                                        if (e.getDtgrade() != null) {
-                                            getGrade = e.getDtgrade();
-                                        } else {
-                                            getGrade = e.getPggrade();
-                                        }
-                                        nameTheses2.add(new Grade(getGrade, e.getName()));
-                                        nameTheses.add(e.getName());
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            	if(checkName(e)) {
+            		if(checkAuthor(e)) {
+            			if (checkType(e)) {
+    	                    if (checkLevel(e)) {
+    	                        if (checkLanguage(e)) {
+    	                            if (checkNumberofauthors(e)) {
+    	                                if (checkResearchsubjects(e)) {
+    	                                    if (checkResearchConcepts(e)) {
+    	                                        if (e.getDtgrade() != null) {
+    	                                            getGrade = e.getDtgrade();
+    	                                        } else {
+    	                                            getGrade = e.getPggrade();
+    	                                        }
+    	                                        nameTheses2.add(new Grade(getGrade, e.getName()));
+    	                                        nameTheses.add(e.getName());
+    	                                    }
+    	                                }
+    	                            }
+    	                        }
+    	                    }
+    	                } 
+            		}    
+            	}
+            }	  	
         }
 
         //thesesLW.setItems(FXCollections.observableArrayList(names));	
@@ -272,6 +276,31 @@ public class SearchGradesController implements Initializable {
         thesesTW.getItems().setAll(nameTheses2);
     }
 
+    public boolean checkAuthor(Thesis e) {
+    	if(authorsTF.getText()=="") {
+    		return true;
+    	} else {
+    		for(String s : e.getAuthors()) {
+    			if(s.contains(authorsTF.getText())) {
+    				return true;
+    			}
+    		}
+    		return false;
+    	}
+    	
+    }
+    
+    public boolean checkName(Thesis e) {
+    	if(nameTF.getText()=="") {
+    		return true;
+    	} else if(e.getName().contains(nameTF.getText())) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    	
+    }
+    
     public boolean checkYear(Thesis e) {
         if (yearCB.getValue() == null) {
             return true;
