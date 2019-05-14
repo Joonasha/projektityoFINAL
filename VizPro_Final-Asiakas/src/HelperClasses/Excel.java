@@ -234,13 +234,16 @@ public class Excel {
      */
     public static boolean removeThesis(Thesis thesis, String address) {
         try {
-
            FileInputStream fis = new FileInputStream(new File(address));
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheetAt(0);
             sheet.removeRow(sheet.getRow(thesis.getRowNum()));
+            FileOutputStream fos = new FileOutputStream(address);
+            workbook.write(fos);
             workbook.close();
+            fos.close();
             fis.close();
+            
             return true;
         } catch (Exception e) {
             e.printStackTrace();
