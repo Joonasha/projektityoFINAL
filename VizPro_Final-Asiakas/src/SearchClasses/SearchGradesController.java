@@ -656,24 +656,25 @@ public class SearchGradesController implements Initializable {
         if (result.get() == book){
             method = "book";                 
         }     
-        alert.close();
+        alert.close(); 
         TextInputDialog Tdialog = new TextInputDialog("");
+        Tdialog.setHeaderText("Muista laittaa numero arvosanan eteen!");
         Tdialog.setContentText("Valittuna: '" + name + "'   Arvosana:");
-        Tdialog.showAndWait();
+        //Tdialog.showAndWait();
         Optional<String> Tresult = Tdialog.showAndWait();
         if (Tresult.isPresent()){
             for (Thesis e : theses) {
                 if (e.getName() == name) {
                     if(method=="pro"){
-                        Excel.addRating(e, excelSource, Tresult.get(), method);
+                        Excel.addRating(e, excelSource, Tresult.get(), method);                        
                     }
                     if(method=="book"){
-                        Excel.addRating(e, excelSource, Tresult.get(), method);;
+                        Excel.addRating(e, excelSource, Tresult.get(), method);
                     }                    
                 }
             }
-        }           
-        Tdialog.close();
+            Tdialog.close();                       
+        }                   
         mainStage = (Stage) VisualizationButton.getScene().getWindow();
         //ScrollPane root = (ScrollPane) FXMLLoader.load(ChartsController.class.getResource("Charts.fxml"));
         Parent root = FXMLLoader.load(SearchGradesController.class.getResource("SearchGrades.fxml"));

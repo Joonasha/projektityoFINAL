@@ -74,5 +74,9 @@ public class MainWindow extends Application {
         Parent root = FXMLLoader.load(SearchGradesController.class.getResource("SearchGrades.fxml"));
         newScene = new Scene(root, 1000, 700);  
         mainStage.setScene(newScene);
+        //mainStage.setX(stage.getX());
+        //mainStage.setY(stage.getY());
+        //System.out.println("vanha toimii" + stage.getX());
+        //System.out.println("uusi toimii" + mainStage.getX());
     }    
 }
