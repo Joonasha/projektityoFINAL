@@ -18,8 +18,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
 
-<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="1300.0" prefWidth="1300.0" stylesheets="@../CentralClasses/mainwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visualization.ChartsController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1100.0" minWidth="1300.0" prefHeight="1100.0" prefWidth="1300.0" stylesheets="@../CentralClasses/mainwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visualization.ChartsController">
+  <content>
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="1300.0" prefWidth="1300.0">
     <children>
       <BorderPane fx:id="borderPane" prefHeight="1100.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -172,3 +175,5 @@
       </BorderPane>
     </children>
 </AnchorPane>
+  </content>
+</ScrollPane>

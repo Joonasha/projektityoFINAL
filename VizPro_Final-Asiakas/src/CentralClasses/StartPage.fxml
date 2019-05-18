@@ -28,7 +28,6 @@
                   <Insets top="30.0" />
                </padding>
             </Label>
-            <Label text="Huom. valittava Excel ei saa olla avattuna ohjelmaa käyttäessä." />
             <Label prefHeight="17.0" prefWidth="369.0" text="Valitse gradut sisältävä Excel-tiedosto ennen OK-napin painamista:">
                <VBox.margin>
                   <Insets top="20.0" />

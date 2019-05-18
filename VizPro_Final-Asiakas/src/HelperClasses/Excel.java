@@ -238,50 +238,11 @@ public class Excel {
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheetAt(0);
             sheet.removeRow(sheet.getRow(thesis.getRowNum()));
-            /*
-            //kikka1
-            int rowIndex = thesis.getRowNum();
-            int lastRowNum = sheet.getLastRowNum();
-            if (rowIndex >= 0 && rowIndex < lastRowNum) {
-                sheet.shiftRows(rowIndex + 1, lastRowNum, -1);
-            }
-            if (rowIndex == lastRowNum) {
-                Row removingRow = sheet.getRow(rowIndex);
-                if (removingRow != null) {
-                    sheet.removeRow(removingRow);
-                }            
-            }
-*/
-            /*  //kikka2
-            FileOutputStream fos = new FileOutputStream(address);
-            workbook.write(fos);            
-            boolean isRowEmpty = false;
-    for(int i = 0; i < sheet.getLastRowNum(); i++){
-        if(sheet.getRow(i)==null){
-            isRowEmpty=true;
-            sheet.shiftRows(i + 1, sheet.getLastRowNum(), -1);
-            i--;
-        continue;
-        }
-        for(int j =0; j<sheet.getRow(i).getLastCellNum();j++){
-            if(sheet.getRow(i).getCell(j).toString().trim().equals("")){
-                isRowEmpty=true;
-            }else {
-                isRowEmpty=false;
-                break;
-            }
-        }
-        if(isRowEmpty==true){
-            sheet.shiftRows(i + 1, sheet.getLastRowNum(), -1);
-            i--;
-        }
-    }            
-*/
             FileOutputStream fos = new FileOutputStream(address);
             workbook.write(fos);
             workbook.close();
-            fis.close();
             fos.close();
+            fis.close();
             
             return true;
         } catch (Exception e) {
@@ -289,28 +250,4 @@ public class Excel {
         }
         return false;
     }
-    
-    public static boolean addRating(Thesis thesis, String address, String rating, String method) { 
-        try {
-
-           FileInputStream fis = new FileInputStream(new File(address));
-            XSSFWorkbook workbook = new XSSFWorkbook(fis);
-            XSSFSheet sheet = workbook.getSheetAt(0);
-            if(method =="pro"){
-                sheet.getRow(thesis.getRowNum()).createCell(16).setCellValue(rating);
-            }
-            if(method == "book"){
-                sheet.getRow(thesis.getRowNum()).createCell(17).setCellValue(rating);
-            }
-            FileOutputStream fos = new FileOutputStream(address);
-            workbook.write(fos);            
-            workbook.close();
-            fis.close();
-            fos.close();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }            
 }

@@ -26,7 +26,7 @@ import javafx.scene.control.ScrollPane;
  */
 public class MainWindow extends Application {
     
-    public static Stage mainStage;
+    public static Stage mainStage, previewStage = new Stage();
     public static Scene newScene;
     public static Parent root;
     
@@ -37,8 +37,8 @@ public class MainWindow extends Application {
         
         Scene scene = new Scene(root);
         mainStage = primaryStage;
-        mainStage.setHeight(900);
-        mainStage.setWidth(1300);
+        mainStage.setHeight(700);
+        mainStage.setWidth(1200);
 
         //VBox base0 = (VBox) FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         //frontpage = new Scene(base0, 640, 400);
@@ -64,7 +64,11 @@ public class MainWindow extends Application {
     public static void PreviewScene(Stage stage) throws IOException {
     	root = FXMLLoader.load(AddPreviewController.class.getResource("AddPreview.fxml"));
     	newScene = new Scene(root, 900, 700);
-    	mainStage.setScene(newScene);
+    	previewStage.show();
+    	previewStage.setScene(newScene);
+    }
+    public static void closePreview() {
+    	previewStage.close();
     }
     public static void VisualizeGradesScene() {
     	mainStage.setScene(newScene);
@@ -74,9 +78,5 @@ public class MainWindow extends Application {
         Parent root = FXMLLoader.load(SearchGradesController.class.getResource("SearchGrades.fxml"));
         newScene = new Scene(root, 1000, 700);  
         mainStage.setScene(newScene);
-        //mainStage.setX(stage.getX());
-        //mainStage.setY(stage.getY());
-        //System.out.println("vanha toimii" + stage.getX());
-        //System.out.println("uusi toimii" + mainStage.getX());
     }    
 }
