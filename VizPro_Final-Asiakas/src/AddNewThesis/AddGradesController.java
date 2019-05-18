@@ -207,7 +207,7 @@ public class AddGradesController implements Initializable {
     }    
 
     @FXML
-    private void BackToMainAction(ActionEvent event) throws IOException {
+	public void BackToMainAction(ActionEvent event) throws IOException {
         mainStage = (Stage) BackToMain.getScene().getWindow();
         Parent root = FXMLLoader.load(MainWindowController.class.getResource("MainWindow.fxml"));
         newScene = new Scene(root, 1000, 700);  
@@ -490,6 +490,7 @@ public class AddGradesController implements Initializable {
     	}
     	thesis=new Thesis(year, authors, name, level, type, articles, language, authorcount, researchSubjects, 
     			researchConcepts, researchMethods, sources, informants, informantCount, classes, context);
+    	
     	Stage stage = (Stage) Confirm.getScene().getWindow();
     	AddPreviewController.initiatePreview(thesis);
     	try {

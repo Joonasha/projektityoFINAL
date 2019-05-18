@@ -150,8 +150,14 @@ public class SearchGradesController implements Initializable {
     ArrayList<Thesis> theses = Excel.readData(excelSource);
     ArrayList<String> names = new ArrayList<String>();
     ArrayList<String> tmpSubjects = new ArrayList<String>();
+    ArrayList<String> tmpSubclass1 = new ArrayList<String>();
+    ArrayList<String> tmpSubclass2 = new ArrayList<String>();
+    ArrayList<String> tmpSubclass3 = new ArrayList<String>();
+    ArrayList<String> tmpSubclass4 = new ArrayList<String>();
     ArrayList<String> tmpConcepts = new ArrayList<String>();
-    ArrayList<String> tmpDatamethods = new ArrayList<String>();
+    ArrayList<String> tmpSources = new ArrayList<String>();
+    ArrayList<String> tmpMethods = new ArrayList<String>();
+    ArrayList<String> tmpInformants = new ArrayList<String>();
     @FXML
     private Label title;
     @FXML
@@ -244,22 +250,36 @@ public class SearchGradesController implements Initializable {
         nameTheses2.clear();
         nameTheses.clear();
         for (Thesis e : theses) {
-            if (checkYear(e)) {
+            if(checkYear(e)) {
             	if(checkName(e)) {
             		if(checkAuthor(e)) {
             			if (checkType(e)) {
-    	                    if (checkLevel(e)) {
+            				if (checkLevel(e)) {
     	                        if (checkLanguage(e)) {
     	                            if (checkNumberofauthors(e)) {
     	                                if (checkResearchsubjects(e)) {
     	                                    if (checkResearchConcepts(e)) {
-    	                                        if (e.getDtgrade() != null) {
-    	                                            getGrade = e.getDtgrade();
-    	                                        } else {
-    	                                            getGrade = e.getPggrade();
-    	                                        }
-    	                                        nameTheses2.add(new Grade(getGrade, e.getName()));
-    	                                        nameTheses.add(e.getName());
+    	                                    	if(checkResearchMethods(e)) {
+    	                                    		if(checkSources(e)) {
+    	                                    			if(checkInformants(e)) {
+    	                                    				if(checkSubject1(e)) {
+    	                                    					if(checkSubject2(e)) {
+    	                                    						if(checkSubject3(e)) {
+    	                                    							if(checkSubject4(e)) {
+    	                                    								if (e.getDtgrade() != null) {
+    	                        	                                            getGrade = e.getDtgrade();
+    	                        	                                        } else {
+    	                        	                                            getGrade = e.getPggrade();
+    	                        	                                        }
+    	                        	                                        nameTheses2.add(new Grade(getGrade, e.getName()));
+    	                        	                                        nameTheses.add(e.getName());
+    	                                    							}
+    	                                    						}
+    	                                    					}
+    	                                    				}
+    	                                    			}
+    	                                    		}
+    	                                    	}
     	                                    }
     	                                }
     	                            }
@@ -379,6 +399,160 @@ public class SearchGradesController implements Initializable {
         return false;
     }
 
+    public boolean checkSubject1(Thesis e) {
+    	tmpSubclass1.clear();
+        if (!subject1subclassesLW.getSelectionModel().isEmpty()) {
+            if (e.getClasses() != null) {
+                for (i = 0; i < e.getClasses().length; i++) {
+                	tmpSubclass1.add(e.getClasses()[i]);
+                }
+            }
+        }
+        if (subject1subclassesLW.getSelectionModel().isEmpty()) {
+        	tmpSubclass1.clear();
+            return true;
+        }
+        if (tmpSubclass1.contains(subject1subclassesLW.getSelectionModel().getSelectedItem())) {
+        	tmpSubclass1.clear();
+            return true;
+        } else {
+            System.out.println(tmpSubclass1);
+        }
+        tmpSubclass1.clear();
+        return false;
+    }
+    public boolean checkSubject2(Thesis e) {
+    	tmpSubclass2.clear();
+        if (!subject2subclassesLW.getSelectionModel().isEmpty()) {
+            if (e.getClasses() != null) {
+                for (i = 0; i < e.getClasses().length; i++) {
+                	tmpSubclass2.add(e.getClasses()[i]);
+                }
+            }
+        }
+        if (subject2subclassesLW.getSelectionModel().isEmpty()) {
+        	tmpSubclass2.clear();
+            return true;
+        }
+        if (tmpSubclass2.contains(subject2subclassesLW.getSelectionModel().getSelectedItem())) {
+        	tmpSubclass2.clear();
+            return true;
+        } else {
+            System.out.println(tmpSubclass2);
+        }
+        tmpSubclass2.clear();
+        return false;
+    }
+    public boolean checkSubject3(Thesis e) {
+    	tmpSubclass3.clear();
+        if (!subject3subclassesLW.getSelectionModel().isEmpty()) {
+            if (e.getClasses() != null) {
+                for (i = 0; i < e.getClasses().length; i++) {
+                	tmpSubclass3.add(e.getClasses()[i]);
+                }
+            }
+        }
+        if (subject3subclassesLW.getSelectionModel().isEmpty()) {
+        	tmpSubclass3.clear();
+            return true;
+        }
+        if (tmpSubclass3.contains(subject3subclassesLW.getSelectionModel().getSelectedItem())) {
+        	tmpSubclass3.clear();
+            return true;
+        } else {
+            System.out.println(tmpSubclass3);
+        }
+        tmpSubclass3.clear();
+        return false;
+    }
+    public boolean checkSubject4(Thesis e) {
+    	tmpSubclass4.clear();
+        if (!subject4subclassesLW.getSelectionModel().isEmpty()) {
+            if (e.getClasses() != null) {
+                for (i = 0; i < e.getClasses().length; i++) {
+                	tmpSubclass4.add(e.getClasses()[i]);
+                }
+            }
+        }
+        if (subject4subclassesLW.getSelectionModel().isEmpty()) {
+        	tmpSubclass4.clear();
+            return true;
+        }
+        if (tmpSubclass4.contains(subject4subclassesLW.getSelectionModel().getSelectedItem())) {
+        	tmpSubclass4.clear();
+            return true;
+        } else {
+            System.out.println(tmpSubclass4);
+        }
+        tmpSubclass4.clear();
+        return false;
+    }
+    public boolean checkResearchMethods(Thesis e) {
+    	tmpMethods.clear();
+        if (!methodLW.getSelectionModel().isEmpty()) {
+            if (e.getResearchMethods() != null) {
+                for (i = 0; i < e.getResearchMethods().length; i++) {
+                	tmpMethods.add(e.getResearchMethods()[i]);
+                }
+            }
+        }
+        if (methodLW.getSelectionModel().isEmpty()) {
+        	tmpMethods.clear();
+            return true;
+        }
+        if (tmpMethods.contains(methodLW.getSelectionModel().getSelectedItem())) {
+        	tmpMethods.clear();
+            return true;
+        } else {
+            System.out.println(tmpMethods);
+        }
+        tmpMethods.clear();
+        return false;
+    }
+    public boolean checkSources(Thesis e) {
+    	tmpSources.clear();
+        if (!datamethodLW.getSelectionModel().isEmpty()) {
+            if (e.getSources() != null) {
+                for (i = 0; i < e.getSources().length; i++) {
+                	tmpSources.add(e.getSources()[i].substring(0,1));
+                }
+            }
+        }
+        if (datamethodLW.getSelectionModel().isEmpty()) {
+        	tmpSources.clear();
+            return true;
+        }
+        if (tmpSources.contains(datamethodLW.getSelectionModel().getSelectedItem().substring(0,1))) {
+        	tmpSources.clear();
+            return true;
+        } else {
+            System.out.println(tmpSources);
+        }
+        tmpSources.clear();
+        return false;
+    }
+    public boolean checkInformants(Thesis e) {
+    	tmpInformants.clear();
+        if (!sourceLW.getSelectionModel().isEmpty()) {
+            if (e.getInformants() != null) {
+                for (i = 0; i < e.getInformants().length; i++) {
+                	tmpInformants.add(e.getInformants()[i].substring(0,2));
+                }
+            }
+        }
+        if (sourceLW.getSelectionModel().isEmpty()) {
+        	tmpInformants.clear();
+            return true;
+        }
+        if (tmpInformants.contains(sourceLW.getSelectionModel().getSelectedItem().substring(0,2))) {
+        	tmpInformants.clear();
+            return true;
+        } else {
+            System.out.println(tmpInformants);
+        }
+        tmpSources.clear();
+        return false;
+    }
     public boolean checkResearchConcepts(Thesis e) {
         tmpConcepts.clear();
         if (!conceptsLW.getSelectionModel().isEmpty()) {

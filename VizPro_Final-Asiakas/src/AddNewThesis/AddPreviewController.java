@@ -1,5 +1,8 @@
 package AddNewThesis;
 
+import static CentralClasses.MainWindow.mainStage;
+import static CentralClasses.MainWindow.newScene;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -8,11 +11,16 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 
 import CentralClasses.MainWindow;
+import CentralClasses.MainWindowController;
 import CentralClasses.StartPageController;
 import HelperClasses.Excel;
 import HelperClasses.Thesis;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -161,16 +169,45 @@ public class AddPreviewController implements Initializable {
 		context=thesis.getContext();
 		previewThesis=thesis;
 	}
-	public void goBack() {
-		Stage stage = (Stage) returnBtn.getScene().getWindow();
-		try {
-			MainWindow.AddGradesScene(stage);
-		} catch (IOException e) {
-			e.printStackTrace();
+	
+	public void confirmAdd() throws IOException {
+        
+		if(previewThesis.getResearchConcepts()!=null) {
+			if(previewThesis.getResearchMethods()!=null) {
+				if(previewThesis.getContext()!=null) {
+					if(previewThesis.getInformants()!=null) {
+						if(previewThesis.getSources()!=null) {
+							if(previewThesis.getYear()!=null) {
+								if(previewThesis.getAuthors()!=null) {
+									if(previewThesis.getName()!=null) {
+										if(previewThesis.getAuthorcount()!=null) {
+											if(previewThesis.getType()!=null) {
+												if(previewThesis.getLevel()!=null) {
+													if(previewThesis.getClasses()!=null) {
+														if(previewThesis.getResearchSubjects()!=null) {
+															if(previewThesis.getLanguage()!=null) {
+																if(previewThesis.getArticles()!=null) {
+																	if(previewThesis.getInformantCount()!=null) {
+																		System.out.println("Gradu lisätty");
+																		Excel.addNewThesis(previewThesis, excelURL);
+																		MainWindow.closePreview();
+																	}
+																}
+															}	
+														}
+													}
+												}
+											}	
+										}
+									}
+								}							
+							}							
+						}
+					}
+				}
+			}
+		} else {
+			System.out.println("Joku kenttä puuttuu");
 		}
-	}
-	public void confirmAdd() {
-		Excel.addNewThesis(previewThesis, excelURL);
-		System.out.println("Gradu lisätty");
 	}
 }

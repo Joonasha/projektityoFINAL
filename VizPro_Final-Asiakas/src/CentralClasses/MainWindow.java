@@ -26,7 +26,7 @@ import javafx.scene.control.ScrollPane;
  */
 public class MainWindow extends Application {
     
-    public static Stage mainStage;
+    public static Stage mainStage, previewStage = new Stage();
     public static Scene newScene;
     public static Parent root;
     
@@ -64,7 +64,11 @@ public class MainWindow extends Application {
     public static void PreviewScene(Stage stage) throws IOException {
     	root = FXMLLoader.load(AddPreviewController.class.getResource("AddPreview.fxml"));
     	newScene = new Scene(root, 900, 700);
-    	mainStage.setScene(newScene);
+    	previewStage.show();
+    	previewStage.setScene(newScene);
+    }
+    public static void closePreview() {
+    	previewStage.close();
     }
     public static void VisualizeGradesScene() {
     	mainStage.setScene(newScene);
